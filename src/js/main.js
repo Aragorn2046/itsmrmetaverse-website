@@ -1,6 +1,8 @@
 /* ============================================
    Main — Entry point for itsmrmetaverse.com
    ============================================ */
+import { initAnimations } from './animations.js';
+import { initParticles } from './particles.js';
 
 // --- Scroll Reveal (IntersectionObserver) ---
 function initScrollReveal() {
@@ -167,4 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initSectionDots();
   initTunnelSkip();
   initContactForm();
+  initAnimations();
+
+  // Ambient particles (skip on reduced motion)
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    initParticles();
+  }
 });
