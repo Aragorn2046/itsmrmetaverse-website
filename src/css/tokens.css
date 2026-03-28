@@ -1,0 +1,95 @@
+/* ============================================
+   Design Tokens — itsmrmetaverse.com
+   Single source of truth for the visual system.
+   ============================================ */
+
+:root {
+  /* --- Colors --- */
+  --color-base: #080c14;
+  --color-base-raised: #0d1117;
+  --color-base-card: #111820;
+
+  --color-accent: #00E5D0;
+  --color-accent-dim: rgba(0, 229, 208, 0.15);
+  --color-accent-glow: rgba(0, 229, 208, 0.08);
+
+  --color-depth: #8B5CF6;
+  --color-depth-dim: rgba(139, 92, 246, 0.15);
+
+  --color-chrome-light: #F5F5F5;
+  --color-chrome-mid: #C0C0C0;
+  --color-chrome-dark: #A0A0A0;
+
+  --color-text: #E6EDF3;
+  --color-text-muted: #8B949E;
+  --color-text-dim: #484f58;
+
+  --color-grid: rgba(88, 166, 255, 0.06);
+
+  /* --- Typography --- */
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 2rem;      /* 32px */
+  --text-4xl: 2.5rem;    /* 40px */
+  --text-5xl: 3.5rem;    /* 56px */
+  --text-hero: clamp(2.5rem, 5vw, 4.5rem);
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.15;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* --- Spacing (8px grid) --- */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-8: 3rem;      /* 48px */
+  --space-10: 4rem;     /* 64px */
+  --space-12: 5rem;     /* 80px */
+  --space-16: 8rem;     /* 128px */
+  --space-section: clamp(4rem, 8vw, 8rem);
+
+  /* --- Borders --- */
+  --border-hairline: 1px solid rgba(0, 229, 208, 0.2);
+  --border-card: 1px solid rgba(0, 229, 208, 0.1);
+  --border-radius: 4px;
+
+  /* --- Transitions --- */
+  --ease-reveal: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+  --duration-reveal: 800ms;
+
+  /* --- Shadows --- */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(0, 229, 208, 0.1);
+
+  /* --- Layout --- */
+  --content-max: 1200px;
+  --content-narrow: 800px;
+  --nav-height: 60px;
+
+  /* Breakpoints (reference only — can't use in media queries)
+     Mobile:  < 640px
+     Tablet:  640px - 1023px
+     Desktop: >= 1024px
+     Wide:    >= 1440px
+  */
+}

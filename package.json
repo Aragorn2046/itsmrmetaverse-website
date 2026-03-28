@@ -1,0 +1,17 @@
+{
+  "name": "itsmrmetaverse-website",
+  "version": "1.0.0",
+  "description": "Personal brand website for Aragorn Meulendijks (MrMetaverse)",
+  "private": true,
+  "scripts": {
+    "dev": "node build.js --watch",
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  },
+  "dependencies": {
+    "gsap": "^3.12.0",
+    "three": "^0.173.0"
+  }
+}

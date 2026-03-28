@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARAGORN — Futurist, Keynote Speaker | ItsMrMetaverse</title>
+  <meta name="description" content="Aragorn Meulendijks (MrMetaverse) — Futurist and keynote speaker on AI, XR, exponential change, and robotics. Book a keynote for your next event.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://itsmrmetaverse.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ARAGORN — Futurist & Keynote Speaker">
+  <meta property="og:description" content="I help organizations see what's coming — and act before it arrives. Keynote speaker on AI, XR, and exponential change.">
+  <meta property="og:url" content="https://itsmrmetaverse.com/">
+  <meta property="og:image" content="https://itsmrmetaverse.com/assets/images/hero-stage.webp">
+  <meta property="og:site_name" content="ARAGORN / ItsMrMetaverse">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ARAGORN — Futurist & Keynote Speaker">
+  <meta name="twitter:description" content="I help organizations see what's coming — and act before it arrives.">
+  <meta name="twitter:image" content="https://itsmrmetaverse.com/assets/images/hero-stage.webp">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "ARAGORN / ItsMrMetaverse",
+        "url": "https://itsmrmetaverse.com/"
+      },
+      {
+        "@type": "Person",
+        "name": "Aragorn Meulendijks",
+        "alternateName": "MrMetaverse",
+        "url": "https://itsmrmetaverse.com/",
+        "image": "https://itsmrmetaverse.com/assets/images/hero-stage.webp",
+        "jobTitle": "Futurist & Keynote Speaker",
+        "description": "Futurist, keynote speaker, and Future Historian specializing in AI, XR/Metaverse, exponential change, and robotics.",
+        "knowsAbout": ["Artificial Intelligence", "Extended Reality", "Metaverse", "Exponential Change", "Robotics", "Future Technology"],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Keynote Speaker"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/aragornmeulendijks/",
+          "https://www.youtube.com/@ItsMrMetaverse2046",
+          "https://itsmrmetaverse.substack.com/"
+        ],
+        "worksFor": [
+          {
+            "@type": "Organization",
+            "name": "Exponential Executives",
+            "url": "https://www.exponential-executives.com"
+          },
+          {
+            "@type": "Organization",
+            "name": "Innovation Network",
+            "url": "https://www.innovation-network.nl"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "name": "Keynote Speaking",
+        "provider": {
+          "@type": "Person",
+          "name": "Aragorn Meulendijks"
+        },
+        "description": "Keynote presentations on AI, XR/Metaverse, exponential change, and robotics for corporate events and conferences.",
+        "areaServed": "Worldwide"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="src/css/tokens.css">
+  <link rel="stylesheet" href="src/css/layout.css">
+  <link rel="stylesheet" href="src/css/components.css">
+  <link rel="stylesheet" href="src/css/tunnel.css">
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav__name">ARAGORN</a>
+    <a href="#hero" class="nav__handle">&gt; ItsMrMetaverse</a>
+  </nav>
+
+  <!-- ===== SECTION DOTS ===== -->
+  <div class="section-dots" id="section-dots" aria-hidden="true">
+    <button class="section-dots__dot" data-section="tunnel" aria-label="Intro"></button>
+    <button class="section-dots__dot" data-section="hero" aria-label="About"></button>
+    <button class="section-dots__dot" data-section="authority" aria-label="Trusted by"></button>
+    <button class="section-dots__dot" data-section="media" aria-label="Media"></button>
+    <button class="section-dots__dot" data-section="topics" aria-label="Topics"></button>
+    <button class="section-dots__dot" data-section="testimonials" aria-label="Testimonials"></button>
+    <button class="section-dots__dot" data-section="work-with-me" aria-label="Work with me"></button>
+    <button class="section-dots__dot" data-section="connect" aria-label="Connect"></button>
+  </div>
+
+  <!-- ===== 1. TUNNEL ENTRANCE ===== -->
+  <section id="tunnel">
+    <canvas id="tunnel-canvas"></canvas>
+    <div class="tunnel-name">
+      <div class="tunnel-name__primary">ARAGORN</div>
+      <div class="tunnel-name__handle">&gt; ItsMrMetaverse</div>
+      <div class="tunnel-name__role">Future Historian</div>
+    </div>
+    <button class="tunnel-skip" id="tunnel-skip">scroll to explore ↓</button>
+  </section>
+
+  <!-- ===== 2. HERO ===== -->
+  <section id="hero" class="section">
+    <div class="hero">
+      <img
+        class="hero__photo"
+        src="src/assets/images/hero-stage.webp"
+        alt="Aragorn Meulendijks on stage"
+        width="380"
+        height="380"
+        loading="eager"
+      >
+      <div class="hero__content">
+        <p class="section__subtitle reveal">&gt; keynote_speaker</p>
+        <h1 class="hero__statement reveal">
+          I help organizations see what's coming — and act before it arrives.
+        </h1>
+        <p class="hero__subtitle reveal">
+          Keynote speaker on AI, XR, exponential change &amp; robotics.
+        </p>
+        <p class="hero__thesis reveal" style="color: var(--color-text-muted); margin-top: var(--space-5); max-width: 600px; line-height: var(--leading-relaxed);">
+          The next decade will compress a century of change into ten years. Most organizations aren't ready. I show them what's coming — and what to do about it.
+        </p>
+        <div style="margin-top: var(--space-6);" class="reveal">
+          <a href="#work-with-me" class="btn btn--primary">Book a Keynote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. AUTHORITY BAR ===== -->
+  <section id="authority" class="section" style="padding-top: 0;">
+    <div class="section__inner">
+      <div class="logo-bar reveal">
+        <span class="logo-bar__label">Spoken at</span>
+        <!-- Logos to be added — Aragorn to provide company/event names -->
+        <span style="color: var(--color-text-dim); font-family: var(--font-mono); font-size: var(--text-sm);">
+          [Company logos will be placed here]
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. MEDIA / SIZZLE REEL ===== -->
+  <section id="media" class="section">
+    <div class="section__inner">
+      <p class="section__subtitle reveal">&gt; on_stage_and_on_air</p>
+      <h2 class="section__title reveal">See It In Action</h2>
+
+      <!-- Video embed — best YouTube keynote clip -->
+      <div class="embed-container reveal" style="margin-bottom: var(--space-8);">
+        <iframe
+          src="about:blank"
+          data-src="https://www.youtube.com/embed/VIDEO_ID"
+          title="Aragorn Meulendijks keynote highlight"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <div style="text-align: center; margin-bottom: var(--space-8);" class="reveal">
+        <a href="#work-with-me" class="btn btn--primary">Book a Keynote</a>
+      </div>
+
+      <!-- Podcasts -->
+      <div class="embed-grid">
+        <div class="card reveal">
+          <p class="card__tag">&gt; podcast_en</p>
+          <h3 class="card__title">Singularity Surfers</h3>
+          <div class="embed-container" style="padding-bottom: 152px; margin-top: var(--space-4);">
+            <iframe
+              src="about:blank"
+              data-src="https://open.spotify.com/embed/playlist/4A6kiqGNbtfBjqvBLCbBBB?theme=0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              style="border-radius: 12px;"
+            ></iframe>
+          </div>
+        </div>
+        <div class="card reveal">
+          <p class="card__tag">&gt; podcast_nl</p>
+          <h3 class="card__title">Singularity Surfers NL</h3>
+          <div class="embed-container" style="padding-bottom: 152px; margin-top: var(--space-4);">
+            <iframe
+              src="about:blank"
+              data-src="https://open.spotify.com/embed/playlist/0fEiLNGw5vdpVwqzghEfYv?theme=0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              style="border-radius: 12px;"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Substack -->
+      <div class="card reveal" style="margin-top: var(--space-6); text-align: center;">
+        <p class="card__tag">&gt; newsletter</p>
+        <h3 class="card__title">ItsMrMetaverse on Substack</h3>
+        <p class="card__text">Deep dives on the forces reshaping our world.</p>
+        <a href="https://itsmrmetaverse.substack.com/" target="_blank" rel="noopener" class="btn btn--secondary">Read on Substack →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. SPEAKING TOPICS ===== -->
+  <section id="topics" class="section">
+    <div class="section__inner">
+      <p class="section__subtitle reveal">&gt; speaking_topics</p>
+      <h2 class="section__title reveal">What I Speak About</h2>
+
+      <div class="grid-2 stagger">
+
+        <!-- Topic 1: AI -->
+        <div class="card bracketed reveal">
+          <p class="card__tag">&gt; artificial_intelligence</p>
+          <h3 class="card__title">AI &amp; The Agent Economy</h3>
+          <p class="card__text">Your industry is about to be reshaped by autonomous AI agents. This isn't a distant future — it's already happening.</p>
+          <ul class="takeaway-list">
+            <li>How AI agents are replacing workflows, not just tasks</li>
+            <li>What the agent economy means for your organization's competitive position</li>
+            <li>Concrete steps to prepare your team for an AI-augmented world</li>
+          </ul>
+          <a href="#work-with-me" class="btn btn--secondary btn--small">Book This Talk</a>
+        </div>
+
+        <!-- Topic 2: XR -->
+        <div class="card bracketed reveal">
+          <p class="card__tag">&gt; extended_reality</p>
+          <h3 class="card__title">XR &amp; The Metaverse</h3>
+          <p class="card__text">Spatial computing isn't science fiction anymore. Apple, Meta, and a wave of startups are building the next computing platform.</p>
+          <ul class="takeaway-list">
+            <li>Where XR creates real business value today (not just hype)</li>
+            <li>The convergence of AR, VR, and AI into spatial intelligence</li>
+            <li>How to evaluate metaverse strategies without falling for buzzwords</li>
+          </ul>
+          <a href="#work-with-me" class="btn btn--secondary btn--small">Book This Talk</a>
+        </div>
+
+        <!-- Topic 3: Exponential Change -->
+        <div class="card bracketed reveal">
+          <p class="card__tag">&gt; exponential_change</p>
+          <h3 class="card__title">Exponential Change</h3>
+          <p class="card__text">We're wired to think linearly, but the world is changing exponentially. That gap is where organizations either thrive or get disrupted.</p>
+          <ul class="takeaway-list">
+            <li>Why exponential trends are invisible until they're overwhelming</li>
+            <li>A framework for spotting and riding exponential curves</li>
+            <li>Case studies of organizations that adapted — and ones that didn't</li>
+          </ul>
+          <a href="#work-with-me" class="btn btn--secondary btn--small">Book This Talk</a>
+        </div>
+
+        <!-- Topic 4: Robotics -->
+        <div class="card bracketed reveal">
+          <p class="card__tag">&gt; robotics</p>
+          <h3 class="card__title">Robotics &amp; Physical AI</h3>
+          <p class="card__text">AI is leaving the screen and entering the physical world. Humanoid robots, autonomous vehicles, and smart infrastructure are here.</p>
+          <ul class="takeaway-list">
+            <li>The state of humanoid robotics and what it means for labor markets</li>
+            <li>How physical AI differs from digital AI — and why it matters more</li>
+            <li>Preparing your workforce for human-robot collaboration</li>
+          </ul>
+          <a href="#work-with-me" class="btn btn--secondary btn--small">Book This Talk</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. TESTIMONIALS ===== -->
+  <section id="testimonials" class="section">
+    <div class="section__inner">
+      <p class="section__subtitle reveal">&gt; what_they_say</p>
+      <h2 class="section__title reveal">From Event Organizers</h2>
+
+      <div class="grid-2 stagger">
+        <div class="testimonial reveal">
+          <p class="testimonial__quote">Aragorn captivated our audience from the first minute. His ability to make complex technology accessible and actionable is remarkable.</p>
+          <p class="testimonial__author">— Event Organizer</p>
+          <p class="testimonial__role">Testimonial source to be confirmed</p>
+        </div>
+        <div class="testimonial reveal">
+          <p class="testimonial__quote">One of the most engaging speakers we've had. The audience was buzzing with ideas for hours after his keynote.</p>
+          <p class="testimonial__author">— Event Organizer</p>
+          <p class="testimonial__role">Testimonial source to be confirmed</p>
+        </div>
+        <div class="testimonial reveal">
+          <p class="testimonial__quote">Aragorn doesn't just talk about the future — he makes you feel it. Our team left with a completely new perspective on where our industry is heading.</p>
+          <p class="testimonial__author">— Event Organizer</p>
+          <p class="testimonial__role">Testimonial source to be confirmed</p>
+        </div>
+        <div class="testimonial reveal">
+          <p class="testimonial__quote">Professional, inspiring, and deeply knowledgeable. Aragorn exceeded all our expectations.</p>
+          <p class="testimonial__author">— Event Organizer</p>
+          <p class="testimonial__role">Testimonial source to be confirmed</p>
+        </div>
+      </div>
+
+      <!-- Metrics row -->
+      <div class="metrics reveal" style="margin-top: var(--space-8);">
+        <div class="metric">
+          <div class="metric__value">200+</div>
+          <div class="metric__label">Keynotes</div>
+        </div>
+        <div class="metric">
+          <div class="metric__value">15+</div>
+          <div class="metric__label">Countries</div>
+        </div>
+        <div class="metric">
+          <div class="metric__value">50K+</div>
+          <div class="metric__label">Audience Reached</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. WORK WITH ME ===== -->
+  <section id="work-with-me" class="section">
+    <div class="section__inner">
+      <p class="section__subtitle reveal">&gt; work_with_me</p>
+      <h2 class="section__title reveal">Let's Work Together</h2>
+      <p class="reveal" style="color: var(--color-text-muted); max-width: 600px; margin-bottom: var(--space-8); line-height: var(--leading-relaxed);">
+        One vision, multiple paths in. Whether you're booking a keynote, joining an executive program, or exploring innovation partnerships.
+      </p>
+
+      <div class="grid-2 stagger">
+
+        <!-- Keynote (primary) -->
+        <div class="card card--primary reveal" style="grid-column: 1 / -1;">
+          <p class="card__tag">&gt; keynote_speaking</p>
+          <h3 class="card__title" style="font-size: var(--text-2xl);">Book a Keynote</h3>
+          <p class="card__text">Available for conferences, corporate events, and leadership summits worldwide.</p>
+          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center;">
+            <a href="#" class="btn btn--primary" id="btn-speakers-academy">Netherlands &amp; Benelux — Speakers Academy</a>
+            <a href="#contact-form" class="btn btn--secondary">International — Contact Directly</a>
+          </div>
+          <p style="margin-top: var(--space-3); font-size: var(--text-sm); color: var(--color-text-dim);">
+            Based in the Netherlands. Available globally.
+          </p>
+        </div>
+
+        <!-- Exponential Executives -->
+        <div class="card reveal">
+          <p class="card__tag">&gt; executive_program</p>
+          <h3 class="card__title">Exponential Executives</h3>
+          <p class="card__text">An executive program for leaders navigating exponential change. Masterclasses, peer learning, and strategic foresight.</p>
+          <a href="https://www.exponential-executives.com" target="_blank" rel="noopener" class="btn btn--secondary btn--small">Learn More →</a>
+        </div>
+
+        <!-- Innovation Network -->
+        <div class="card reveal">
+          <p class="card__tag">&gt; innovation</p>
+          <h3 class="card__title">Innovation Network</h3>
+          <p class="card__text">Connecting forward-thinking leaders through Innovation Dinners and collaborative partnerships.</p>
+          <a href="https://www.innovation-network.nl" target="_blank" rel="noopener" class="btn btn--secondary btn--small">Learn More →</a>
+        </div>
+
+        <!-- Vibe Code Masterclass -->
+        <div class="card reveal">
+          <p class="card__tag">&gt; masterclass</p>
+          <h3 class="card__title">Vibe Code Masterclass</h3>
+          <p class="card__text">Learn to build with AI — hands-on masterclass for professionals who want to create with code, powered by AI.</p>
+          <a href="https://www.vibecodemasterclass.nl" target="_blank" rel="noopener" class="btn btn--secondary btn--small">Learn More →</a>
+        </div>
+
+      </div>
+
+      <!-- Contact form -->
+      <div id="contact-form" class="bracketed reveal" style="margin-top: var(--space-10); max-width: 600px;">
+        <p class="section__subtitle">&gt; get_in_touch</p>
+        <h3 style="font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-5);">International Booking &amp; Inquiries</h3>
+        <form class="form" action="https://formspree.io/f/FORM_ID" method="POST">
+          <div class="form__field">
+            <label class="form__label" for="name">Name</label>
+            <input class="form__input" type="text" id="name" name="name" required>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="email">Email</label>
+            <input class="form__input" type="email" id="email" name="email" required>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="event-date">Event Date</label>
+            <input class="form__input" type="date" id="event-date" name="event-date">
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="message">Message</label>
+            <textarea class="form__textarea" id="message" name="message" placeholder="Tell me about your event..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Send Inquiry</button>
+        </form>
+        <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-dim);">
+          Or email directly: <a href="mailto:hello@itsmrmetaverse.com" style="color: var(--color-accent);">hello@itsmrmetaverse.com</a>
+        </p>
+      </div>
+
+      <!-- Media kit -->
+      <div class="reveal" style="margin-top: var(--space-8); text-align: center;">
+        <a href="#" class="btn btn--secondary">Download Media Kit (Coming Soon)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. STAY CONNECTED ===== -->
+  <section id="connect" class="section">
+    <div class="section__inner" style="text-align: center;">
+      <p class="section__subtitle reveal">&gt; stay_connected</p>
+      <h2 class="section__title reveal">Stay Connected</h2>
+
+      <div class="social-links reveal" style="justify-content: center; margin-bottom: var(--space-8);">
+        <a href="https://www.linkedin.com/in/aragornmeulendijks/" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
+        <a href="https://www.youtube.com/@ItsMrMetaverse2046" target="_blank" rel="noopener" class="social-link">YouTube</a>
+        <a href="https://x.com/ItsMrMetaverse" target="_blank" rel="noopener" class="social-link">X</a>
+        <a href="https://www.instagram.com/itsmrmetaverse/" target="_blank" rel="noopener" class="social-link">Instagram</a>
+        <a href="https://itsmrmetaverse.substack.com/" target="_blank" rel="noopener" class="social-link">Substack</a>
+        <a href="https://open.spotify.com/show/ItsMrMetaverse" target="_blank" rel="noopener" class="social-link">Spotify</a>
+      </div>
+
+      <!-- Extended Mind Blueprint -->
+      <div class="card reveal" style="max-width: 500px; margin: 0 auto var(--space-8);">
+        <p class="card__tag">&gt; extended_mind</p>
+        <h3 class="card__title">Extended Mind Blueprint</h3>
+        <p class="card__text">The infrastructure behind how I work — my AI-augmented cognitive architecture. A living document on building a second brain with AI.</p>
+        <a href="https://extended-mind-blueprint.itsmrmetaverse.com/" target="_blank" rel="noopener" class="btn btn--secondary btn--small">Explore the Blueprint →</a>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="reveal">
+        <p style="color: var(--color-text-muted); margin-bottom: var(--space-4);">Get my latest thinking delivered to your inbox.</p>
+        <a href="https://itsmrmetaverse.substack.com/subscribe" target="_blank" rel="noopener" class="btn btn--secondary">Subscribe on Substack</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div style="margin-bottom: var(--space-4);">
+      <a href="#work-with-me" class="btn btn--primary btn--small">Book a Keynote</a>
+    </div>
+    <p class="footer__copy">
+      &copy; 2026 <span class="chrome-text">ARAGORN</span> / <span class="handle-text">ItsMrMetaverse</span>
+    </p>
+  </footer>
+
+  <!-- Main JS -->
+  <script type="module" src="src/js/main.js"></script>
+</body>
+</html>

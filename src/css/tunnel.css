@@ -1,0 +1,114 @@
+/* ============================================
+   Tunnel — WebGL canvas + mobile CSS fallback
+   ============================================ */
+
+/* --- Tunnel container --- */
+#tunnel {
+  background: var(--color-base);
+}
+
+/* --- Name overlay (visible during tunnel sequence) --- */
+.tunnel-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.tunnel-name__primary {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  letter-spacing: 0.15em;
+  background: linear-gradient(135deg, var(--color-chrome-mid), var(--color-chrome-light), var(--color-chrome-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0;
+}
+
+.tunnel-name__handle {
+  font-family: var(--font-mono);
+  font-size: clamp(0.875rem, 2vw, 1.25rem);
+  color: var(--color-accent);
+  margin-top: var(--space-3);
+  opacity: 0;
+}
+
+.tunnel-name__role {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-dim);
+  margin-top: var(--space-2);
+  opacity: 0;
+}
+
+/* --- Mobile fallback (no Three.js) --- */
+@media (max-width: 1023px) {
+  #tunnel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(0, 229, 208, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 40%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+      var(--color-base);
+  }
+
+  #tunnel canvas {
+    display: none;
+  }
+
+  .tunnel-name__primary {
+    opacity: 1;
+    animation: fadeSlideUp 1s var(--ease-reveal) 0.3s both;
+  }
+
+  .tunnel-name__handle {
+    opacity: 1;
+    animation: fadeSlideUp 1s var(--ease-reveal) 0.8s both;
+  }
+
+  .tunnel-name__role {
+    opacity: 1;
+    animation: fadeSlideUp 1s var(--ease-reveal) 1.2s both;
+  }
+
+  .tunnel-skip {
+    display: none;
+  }
+}
+
+/* --- Reduced motion fallback --- */
+@media (prefers-reduced-motion: reduce) {
+  .tunnel-name__primary,
+  .tunnel-name__handle,
+  .tunnel-name__role {
+    opacity: 1;
+    animation: none;
+  }
+
+  #tunnel canvas {
+    display: none;
+  }
+
+  #tunnel {
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(0, 229, 208, 0.06) 0%, transparent 60%),
+      var(--color-base);
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
