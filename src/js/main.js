@@ -3,6 +3,7 @@
    ============================================ */
 import { initAnimations } from './animations.js';
 import { initParticles } from './particles.js';
+import { initTunnel } from './tunnel/controller.js';
 
 // --- Scroll Reveal (IntersectionObserver) ---
 function initScrollReveal() {
@@ -170,6 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTunnelSkip();
   initContactForm();
   initAnimations();
+  initTunnel();
 
   // Ambient particles (skip on reduced motion)
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
