@@ -3,14 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aragorn Meulendijks — ItsMrMetaverse | Keynote Speaker on AI, Exponential Tech & the Singularity</title>
-<meta name="description" content="Future Historian. AI Explorer. Singularity Surfer. Keynote speaker delivering talks on AI, exponential technology, and the future across 15+ countries.">
-<meta property="og:title" content="Aragorn Meulendijks — ItsMrMetaverse">
-<meta property="og:description" content="Future Historian. AI Explorer. Singularity Surfer. Keynote speaker on AI, exponential tech & the singularity.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.itsmrmetaverse.com/">
-<link rel="canonical" href="https://www.itsmrmetaverse.com/">
+<title>Hero E — Prime Radiant</title>
 <link href="https://fonts.cdnfonts.com/css/nasalization-2" rel="stylesheet">
+<link rel="preload" as="image" href="assets/action-shots/DSCF1354-Verbeterd-NR.jpg">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -660,6 +655,154 @@
     width: 100%;
   }
 
+  /* === NEWSLETTER / SUBSTACK === */
+  .newsletter-section {
+    padding: 6rem 2rem;
+    border-top: 1px solid rgba(212, 160, 86, 0.06);
+  }
+  .newsletter-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .newsletter-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .newsletter-tagline {
+    font-size: 1.05rem;
+    color: #8b949e;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .newsletter-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .newsletter-featured {
+    grid-row: 1 / 3;
+    background: rgba(212, 160, 86, 0.015);
+    border: 1px solid rgba(212, 160, 86, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .newsletter-featured:hover {
+    border-color: rgba(212, 160, 86, 0.25);
+    transform: translateY(-3px);
+  }
+  .newsletter-featured .nl-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #04060a;
+    background: linear-gradient(135deg, #d4a056, #f0d8b0);
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .newsletter-featured .nl-content {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .newsletter-featured .nl-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #e6edf3;
+    line-height: 1.35;
+    margin-bottom: 1rem;
+  }
+  .newsletter-featured .nl-excerpt {
+    font-size: 0.95rem;
+    color: #8b949e;
+    line-height: 1.65;
+    flex: 1;
+  }
+  .newsletter-featured .nl-date {
+    font-size: 0.75rem;
+    color: #6e7681;
+    margin-top: 1.2rem;
+    letter-spacing: 0.05em;
+  }
+  .newsletter-card {
+    background: rgba(212, 160, 86, 0.015);
+    border: 1px solid rgba(212, 160, 86, 0.08);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .newsletter-card:hover {
+    border-color: rgba(212, 160, 86, 0.2);
+    transform: translateY(-2px);
+  }
+  .newsletter-card .nl-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #e6edf3;
+    line-height: 1.4;
+    margin-bottom: 0.6rem;
+  }
+  .newsletter-card .nl-excerpt {
+    font-size: 0.85rem;
+    color: #8b949e;
+    line-height: 1.55;
+    flex: 1;
+  }
+  .newsletter-card .nl-date {
+    font-size: 0.7rem;
+    color: #6e7681;
+    margin-top: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  .newsletter-subscribe {
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  .newsletter-subscribe a {
+    display: inline-block;
+    padding: 0.8rem 2.5rem;
+    border: 1px solid rgba(212, 160, 86, 0.4);
+    color: #d4a056;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .newsletter-subscribe a:hover {
+    background: rgba(212, 160, 86, 0.1);
+    border-color: #d4a056;
+    box-shadow: 0 0 30px rgba(212, 160, 86, 0.15);
+  }
+  .newsletter-loading {
+    text-align: center;
+    color: #6e7681;
+    font-size: 0.85rem;
+    padding: 3rem 0;
+  }
+  @media (max-width: 900px) {
+    .newsletter-grid {
+      grid-template-columns: 1fr;
+    }
+    .newsletter-featured {
+      grid-row: auto;
+    }
+  }
+
   /* === VIDEO EMBED === */
   .video-embed-section {
     padding: 5rem 2rem;
@@ -808,8 +951,11 @@
       gap: 2rem;
     }
     .layout-split-photo {
-      aspect-ratio: 16/9;
-      max-height: 350px;
+      aspect-ratio: 4/3;
+      max-height: 400px;
+    }
+    .layout-split-photo img {
+      object-position: center 20%;
     }
     .layout-split .layout-split-photo { order: -1; }
   }
@@ -887,8 +1033,8 @@
     .testimonials-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .why-grid { grid-template-columns: 1fr; }
-    .hero-portrait-wrap { width: 300px; height: 300px; left: 50%; top: 30%; }
-    .hero-content { left: 50%; top: 72%; max-width: 90vw; }
+    .hero-portrait-wrap { display: none; }
+    .hero-content { left: 50%; top: 65%; max-width: 90vw; }
     .hero-cta { bottom: 5%; }
   }
   @media (max-width: 600px) {
@@ -958,7 +1104,7 @@
   <div class="section-divider"></div>
   <div class="about-grid">
     <div class="about-image-wrap">
-      <img src="assets/action-shots/DSCF1354-Verbeterd-NR.jpg" alt="Aragorn on stage" loading="lazy">
+      <img src="assets/action-shots/DSCF1354-Verbeterd-NR.jpg" alt="Aragorn on stage">
     </div>
     <div class="about-text">
       <h2>Aragorn Meulendijks</h2>
@@ -969,6 +1115,7 @@
         <a href="https://www.linkedin.com/in/itsmrmetaverse/" target="_blank">LinkedIn</a>
         <a href="https://www.youtube.com/@ItsMrMetaverse" target="_blank">YouTube</a>
         <a href="https://open.spotify.com/playlist/0fEiLNGw5vdpVwqzghEfYv?si=4048dfa1aabf4460" target="_blank">Podcast</a>
+        <a href="https://itsmrmetaverse.substack.com" target="_blank">Substack</a>
       </div>
     </div>
   </div>
@@ -1034,6 +1181,24 @@
     <div class="spotify-label">The Podcast</div>
     <div class="spotify-title">ItsMrMetaverse. Deep conversations with the builders shaping what comes next.</div>
     <iframe src="https://open.spotify.com/embed/playlist/0fEiLNGw5vdpVwqzghEfYv?utm_source=generator&theme=0" height="352" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- ═══════════ NEWSLETTER ═══════════ -->
+<section class="newsletter-section" id="newsletter">
+  <div class="newsletter-inner">
+    <div class="newsletter-header">
+      <div class="section-label">The Newsletter</div>
+      <div class="section-heading">Future-Historian</div>
+      <div class="section-divider"></div>
+      <p class="newsletter-tagline">Challenging mainstream forecasts with historical patterns, exponential thinking, and the conviction that AI today is the worst it will ever be.</p>
+    </div>
+    <div class="newsletter-grid" id="newsletter-grid">
+      <div class="newsletter-loading">Loading latest articles...</div>
+    </div>
+    <div class="newsletter-subscribe">
+      <a href="https://itsmrmetaverse.substack.com/subscribe" target="_blank">Subscribe to the Newsletter</a>
+    </div>
   </div>
 </section>
 
@@ -1813,10 +1978,28 @@ const patterns = [networkWave, dnaHelix, lorenzAttractor, mobiusStrip, tesseract
 // Scale multipliers per pattern
 const SCALE_MULT = [1.8, 1, 2, 1.5, 1, 1, 2, 2, 1.8];
 
+// Cache DOM-derived shape center (updated on resize + init)
+const portraitWrap = document.querySelector('.hero-portrait-wrap');
+const heroContent = document.querySelector('.hero-content');
+let shapeCenter = { x: 0, y: 0, mobile: false };
+
+function updateShapeCenter() {
+  shapeCenter.mobile = width <= 900;
+  if (shapeCenter.mobile) {
+    // Portrait hidden on mobile — center shapes in upper half of hero
+    shapeCenter.x = width / 2;
+    shapeCenter.y = height * 0.38;
+  } else {
+    shapeCenter.x = width / 2;
+    shapeCenter.y = height / 2;
+  }
+}
+
 function getTargetPosition(i, total) {
-  const cx = width / 2;
-  const cy = height / 2;
-  const scale = Math.min(width, height) * 0.38 * SCALE_MULT[currentPattern];
+  const cx = shapeCenter.x;
+  const cy = shapeCenter.y;
+  const mobileScale = shapeCenter.mobile ? 0.7 : 1;
+  const scale = Math.min(width, height) * 0.38 * SCALE_MULT[currentPattern] * mobileScale;
   return patterns[currentPattern](i, total, cx, cy, scale);
 }
 
@@ -1857,10 +2040,13 @@ function createParticle(i) {
 
 let activeParticleCount = PARTICLE_COUNT;
 
+const heroElement = document.querySelector('.hero');
+
 function init() {
   const dpr = Math.min(window.devicePixelRatio || 1, 2); // cap at 2x to avoid perf hit
-  width = window.innerWidth;
-  height = window.innerHeight;
+  const heroRect = heroElement.getBoundingClientRect();
+  width = heroRect.width;
+  height = heroRect.height;
   canvas.width = canvasFg.width = width * dpr;
   canvas.height = canvasFg.height = height * dpr;
   canvas.style.width = canvasFg.style.width = width + 'px';
@@ -1872,6 +2058,7 @@ function init() {
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     particles.push(createParticle(i));
   }
+  updateShapeCenter();
   buildStructureLines();
 }
 
@@ -1882,9 +2069,9 @@ function buildStructureLines() {
   structureCanvas.width = width;
   structureCanvas.height = height;
   const sctx = structureCanvas.getContext('2d');
-  const cx = width / 2;
-  const cy = height / 2;
-  const maxDist = Math.min(width, height) * 0.4;
+  const cx = shapeCenter.x;
+  const cy = shapeCenter.y;
+  const maxDist = Math.min(width, height) * (shapeCenter.mobile ? 0.25 : 0.4);
 
   sctx.strokeStyle = 'rgba(180, 140, 70, 0.03)';
   sctx.lineWidth = 0.5;
@@ -1963,9 +2150,10 @@ function draw(now) {
   // Draw structural guides (precomputed offscreen canvas)
   if (structureCanvas) ctx.drawImage(structureCanvas, 0, 0);
 
-  // Precompute center
-  const cx = width / 2;
-  const cy = height / 2;
+  // Precompute center (from DOM positions)
+  const isMobileDraw = shapeCenter.mobile;
+  const cx = shapeCenter.x;
+  const cy = shapeCenter.y;
 
   // Update and draw particles
   const pLen = activeParticleCount;
@@ -2027,7 +2215,8 @@ function draw(now) {
     }
 
     // Portrait singularity — both layers react (distance-squared early-out)
-    {
+    // Skip on mobile where portrait is hidden
+    if (!shapeCenter.mobile) {
       const portraitCx = width * 0.25;
       const portraitCy = height * 0.5;
       const portraitRadius = 151;
@@ -2059,7 +2248,7 @@ function draw(now) {
           p.vy -= (pdy / pDist) * pull * 30;
         }
       }
-    }
+    } // end portrait singularity desktop-only block
 
     // Anti-clumping — only on high-tier devices (most expensive per-particle op)
     if (USE_ANTI_CLUMP && i % 8 === time % 8) {
@@ -2117,8 +2306,8 @@ function draw(now) {
   }
 
   // Central glow (where the Prime Radiant device would be)
-  const cx2 = width / 2;
-  const cy2 = height / 2;
+  const cx2 = shapeCenter.x;
+  const cy2 = shapeCenter.y;
   const glowPulse = 0.5 + 0.2 * Math.sin(time * 0.01);
   const centralGlow = ctx.createRadialGradient(cx2, cy2, 0, cx2, cy2, 200);
   centralGlow.addColorStop(0, `rgba(212, 160, 86, ${0.04 * glowPulse})`);
@@ -2165,11 +2354,14 @@ function draw(now) {
     ctx.fill();
   }
 
-  // Portrait singularity visual — aligned exactly with the CSS portrait circle (252px radius)
-  {
-    const pcx = width * 0.25;
-    const pcy = height * 0.5;
-    const pr = 151; // halo radius (252 * 0.6) — 40% reduced
+  // Portrait singularity visual — use actual DOM position for pixel-perfect alignment
+  // Skip on mobile where portrait is hidden
+  if (!shapeCenter.mobile) {
+    const portraitEl = document.querySelector('.hero-portrait-wrap');
+    const portraitRect = portraitEl.getBoundingClientRect();
+    const pcx = portraitRect.left + portraitRect.width / 2;
+    const pcy = portraitRect.top + portraitRect.height / 2;
+    const pr = portraitRect.width * 0.63 / 2; // matches CSS ::before 63% width
 
     // Dark void inside portrait area (background canvas only — behind the HTML portrait)
     const pVoidFade = ctx.createRadialGradient(pcx, pcy, pr * 0.6, pcx, pcy, pr);
@@ -2190,7 +2382,7 @@ function draw(now) {
     ctx.beginPath();
     ctx.arc(pcx, pcy, pr * 1.12, 0, TAU);
     ctx.fill();
-  }
+  } // end portrait singularity visual desktop-only block
 
   // Faint mathematical notation overlay on foreground (floats over content)
   drawMathNotation(ctxFg);
@@ -2277,18 +2469,21 @@ document.addEventListener('mouseleave', () => {
   mouse.y = -1000;
 });
 
-// Touch support
+// Touch support — passive to allow native scroll, only track in hero
+const heroEl = document.querySelector('.hero');
 document.addEventListener('touchmove', (e) => {
-  e.preventDefault();
+  const touch = e.touches[0];
+  const heroRect = heroEl.getBoundingClientRect();
+  if (touch.clientY < heroRect.top || touch.clientY > heroRect.bottom) return;
   const rect = canvas.getBoundingClientRect();
   mouse.prevX = mouse.x;
   mouse.prevY = mouse.y;
-  mouse.x = e.touches[0].clientX - rect.left;
-  mouse.y = e.touches[0].clientY - rect.top;
+  mouse.x = touch.clientX - rect.left;
+  mouse.y = touch.clientY - rect.top;
   const dx = mouse.x - mouse.prevX;
   const dy = mouse.y - mouse.prevY;
   mouse.speed = Math.sqrt(dx * dx + dy * dy);
-}, { passive: false });
+}, { passive: true });
 
 document.addEventListener('touchend', () => {
   mouse.x = -1000;
@@ -2297,14 +2492,16 @@ document.addEventListener('touchend', () => {
 
 window.addEventListener('resize', () => {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  width = window.innerWidth;
-  height = window.innerHeight;
+  const heroRect = heroElement.getBoundingClientRect();
+  width = heroRect.width;
+  height = heroRect.height;
   canvas.width = canvasFg.width = width * dpr;
   canvas.height = canvasFg.height = height * dpr;
   canvas.style.width = canvasFg.style.width = width + 'px';
   canvas.style.height = canvasFg.style.height = height + 'px';
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctxFg.setTransform(dpr, 0, 0, dpr, 0, 0);
+  updateShapeCenter();
   buildStructureLines();
 });
 
@@ -2364,6 +2561,97 @@ requestAnimationFrame(draw);
     wrap.removeChild(thumb);
     wrap.appendChild(iframe);
   });
+})();
+
+// === NEWSLETTER: Fetch Substack RSS ===
+(async function() {
+  const grid = document.getElementById('newsletter-grid');
+  if (!grid) return;
+
+  try {
+    // Use a CORS proxy to fetch the RSS feed
+    const feedUrl = 'https://itsmrmetaverse.substack.com/feed';
+    const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(feedUrl);
+    const res = await fetch(proxyUrl);
+    if (!res.ok) throw new Error('Feed fetch failed');
+    const text = await res.text();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(text, 'text/xml');
+    const items = xml.querySelectorAll('item');
+
+    if (items.length === 0) throw new Error('No articles found');
+
+    grid.innerHTML = '';
+
+    const maxArticles = Math.min(items.length, 3);
+
+    for (let i = 0; i < maxArticles; i++) {
+      const item = items[i];
+      const title = item.querySelector('title')?.textContent || '';
+      const link = item.querySelector('link')?.textContent || '#';
+      const pubDate = item.querySelector('pubDate')?.textContent || '';
+      const desc = item.querySelector('description')?.textContent || '';
+
+      // Strip HTML from description and truncate
+      const tmp = document.createElement('div');
+      tmp.innerHTML = desc;
+      const plainText = tmp.textContent || tmp.innerText || '';
+
+      // Format date
+      const date = new Date(pubDate);
+      const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      if (i === 0) {
+        // Featured article (large card)
+        const excerpt = plainText.substring(0, 280).trim() + (plainText.length > 280 ? '...' : '');
+        const card = document.createElement('a');
+        card.href = link;
+        card.target = '_blank';
+        card.className = 'newsletter-featured';
+        card.innerHTML =
+          '<div class="nl-content">' +
+            '<span class="nl-badge">Latest Article</span>' +
+            '<div class="nl-title">' + title + '</div>' +
+            '<div class="nl-excerpt">' + excerpt + '</div>' +
+            '<div class="nl-date">' + dateStr + '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      } else {
+        // Smaller card
+        const excerpt = plainText.substring(0, 150).trim() + (plainText.length > 150 ? '...' : '');
+        const card = document.createElement('a');
+        card.href = link;
+        card.target = '_blank';
+        card.className = 'newsletter-card';
+        card.innerHTML =
+          '<div class="nl-title">' + title + '</div>' +
+          '<div class="nl-excerpt">' + excerpt + '</div>' +
+          '<div class="nl-date">' + dateStr + '</div>';
+        grid.appendChild(card);
+      }
+    }
+  } catch (e) {
+    // Fallback: show static content if RSS fetch fails
+    grid.innerHTML =
+      '<a href="https://itsmrmetaverse.substack.com/p/the-petrodollar-trap-how-iran-could" target="_blank" class="newsletter-featured">' +
+        '<div class="nl-content">' +
+          '<span class="nl-badge">Latest Article</span>' +
+          '<div class="nl-title">The Petrodollar Trap: How Iran Could Collapse the American Economy Without Firing a Missile</div>' +
+          '<div class="nl-excerpt">Iran doesn\'t need nuclear weapons to destroy American economic dominance. By threatening the Strait of Hormuz, it can force Gulf petrodollars away from US markets...</div>' +
+          '<div class="nl-date">April 3, 2026</div>' +
+        '</div>' +
+      '</a>' +
+      '<a href="https://itsmrmetaverse.substack.com/p/the-pentagon-used-ai-to-bomb-3000" target="_blank" class="newsletter-card">' +
+        '<div class="nl-title">The Truth about The Iran War</div>' +
+        '<div class="nl-excerpt">How the Strait of Hormuz is the Achilles Heel of the World. Forget about Oil.</div>' +
+        '<div class="nl-date">March 17, 2026</div>' +
+      '</a>' +
+      '<a href="https://itsmrmetaverse.substack.com/p/xi-ping-is-winning-the-ai-cold-war" target="_blank" class="newsletter-card">' +
+        '<div class="nl-title">Xi Ping is winning the AI \'Cold War\' with Trump in the Strait of Hormuz</div>' +
+        '<div class="nl-excerpt">Is this Cold War II escalation, or the beginning of World War III?</div>' +
+        '<div class="nl-date">March 16, 2026</div>' +
+      '</a>';
+  }
 })();
 </script>
 
