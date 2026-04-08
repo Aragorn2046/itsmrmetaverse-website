@@ -1,467 +1,2365 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARAGORN — Futurist, Keynote Speaker | ItsMrMetaverse</title>
-  <meta name="description" content="Aragorn Meulendijks (MrMetaverse) — Futurist and keynote speaker on AI, XR, exponential change, and robotics. Book a keynote for your next event.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://itsmrmetaverse.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero E — Prime Radiant</title>
+<link href="https://fonts.cdnfonts.com/css/nasalization-2" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #04060a; color: #e6edf3; font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden; }
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="ARAGORN — Futurist & Keynote Speaker">
-  <meta property="og:description" content="I help organizations see what's coming — and act before it arrives. Keynote speaker on AI, XR, and exponential change.">
-  <meta property="og:url" content="https://itsmrmetaverse.com/">
-  <meta property="og:image" content="https://itsmrmetaverse.com/assets/images/hero-stage.webp">
-  <meta property="og:site_name" content="ARAGORN / ItsMrMetaverse">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ARAGORN — Futurist & Keynote Speaker">
-  <meta name="twitter:description" content="I help organizations see what's coming — and act before it arrives.">
-  <meta name="twitter:image" content="https://itsmrmetaverse.com/assets/images/hero-stage.webp">
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "name": "ARAGORN / ItsMrMetaverse",
-        "url": "https://itsmrmetaverse.com/"
-      },
-      {
-        "@type": "Person",
-        "name": "Aragorn Meulendijks",
-        "alternateName": "MrMetaverse",
-        "url": "https://itsmrmetaverse.com/",
-        "image": "https://itsmrmetaverse.com/assets/images/hero-stage.webp",
-        "jobTitle": "Futurist & Keynote Speaker",
-        "description": "Futurist, keynote speaker, and Future Historian specializing in AI, XR/Metaverse, exponential change, and robotics.",
-        "knowsAbout": ["Artificial Intelligence", "Extended Reality", "Metaverse", "Exponential Change", "Robotics", "Future Technology"],
-        "hasOccupation": {
-          "@type": "Occupation",
-          "name": "Keynote Speaker"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/aragornmeulendijks/",
-          "https://www.youtube.com/@ItsMrMetaverse2046",
-          "https://itsmrmetaverse.substack.com/"
-        ],
-        "worksFor": [
-          {
-            "@type": "Organization",
-            "name": "Exponential Executives",
-            "url": "https://www.exponential-executives.com"
-          },
-          {
-            "@type": "Organization",
-            "name": "Innovation Network",
-            "url": "https://www.innovation-network.nl"
-          }
-        ]
-      },
-      {
-        "@type": "Service",
-        "name": "Keynote Speaking",
-        "provider": {
-          "@type": "Person",
-          "name": "Aragorn Meulendijks"
-        },
-        "description": "Keynote presentations on AI, XR/Metaverse, exponential change, and robotics for corporate events and conferences.",
-        "areaServed": "Worldwide"
-      }
-    ]
+  .hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
   }
-  </script>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  canvas#radiant {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+  }
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="src/css/tokens.css">
-  <link rel="stylesheet" href="src/css/layout.css">
-  <link rel="stylesheet" href="src/css/components.css">
-  <link rel="stylesheet" href="src/css/tunnel.css">
+  canvas#radiant-fg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .hero-portrait-wrap {
+    position: absolute;
+    z-index: 1;
+    left: 25%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 504px;
+    height: 504px;
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeIn 1s 1.2s ease-out forwards;
+  }
+
+  /* Gold halo ring — reduced 40% from original, hugs the portrait tighter */
+  /* Singularity halo — dark void inside, gold light bleeding outward */
+  .hero-portrait-wrap::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 63%;
+    height: 63%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid rgba(212, 160, 86, 0.22);
+    box-shadow: 0 0 18px rgba(212, 160, 86, 0.14), 0 0 40px rgba(212, 160, 86, 0.07), 0 0 70px rgba(212, 160, 86, 0.03);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.2) 35%, rgba(0, 0, 0, 0.08) 60%, transparent 75%);
+  }
+
+  .hero-portrait {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .hero-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
+  .hero-content {
+    position: absolute;
+    z-index: 3;
+    left: 75%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 600px;
+    padding: 3rem 3rem;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Subtle dark halo behind text for readability */
+    background: radial-gradient(ellipse 120% 140% at 50% 50%, rgba(4, 6, 10, 0.5) 0%, rgba(4, 6, 10, 0.3) 40%, transparent 70%);
+    border-radius: 20px;
+  }
+
+  .hero-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #d4a056;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 8px rgba(4, 6, 10, 0.9), 0 0 20px rgba(4, 6, 10, 0.7);
+    opacity: 0;
+    animation: fadeUp 1s 1.5s ease-out forwards;
+  }
+
+  .hero-name {
+    font-family: 'Nasalization', system-ui, sans-serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #ffffff, #f0d8b0, #d4a056);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* Thin dark outline for contrast against particles */
+    -webkit-text-stroke: 1px rgba(4, 6, 10, 0.5);
+    paint-order: stroke fill;
+    /* Dark halo behind text */
+    filter: drop-shadow(0 0 12px rgba(4, 6, 10, 0.9)) drop-shadow(0 0 30px rgba(4, 6, 10, 0.6));
+    opacity: 0;
+    animation: fadeUp 1s 1.8s ease-out forwards;
+  }
+
+  .hero-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 400;
+    color: #8b949e;
+    letter-spacing: 0.08em;
+    margin-bottom: 0;
+    white-space: nowrap;
+    text-shadow: 0 0 8px rgba(4, 6, 10, 0.9), 0 0 20px rgba(4, 6, 10, 0.7);
+    opacity: 0;
+    animation: fadeUp 1s 2.0s ease-out forwards;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: #d4a056;
+  }
+
+  .hero-motto {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(212, 160, 86, 0.6);
+    margin-top: 1.5rem;
+    text-shadow: 0 0 8px rgba(4, 6, 10, 0.9), 0 0 20px rgba(4, 6, 10, 0.7);
+    opacity: 0;
+    animation: fadeUp 1s 2.3s ease-out forwards;
+  }
+
+  .hero-cta {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: 15%;
+    transform: translateX(-50%);
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    border: 1px solid rgba(212, 160, 86, 0.4);
+    color: #d4a056;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    opacity: 0;
+    pointer-events: auto;
+    animation: fadeIn 1s 2.2s ease-out forwards;
+  }
+
+  .hero-cta:hover {
+    background: rgba(212, 160, 86, 0.1);
+    border-color: #d4a056;
+    box-shadow: 0 0 30px rgba(212, 160, 86, 0.15);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #484f58;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
+  }
+
+  /* === GLOBAL SECTION STYLES === */
+  section { position: relative; padding: 6rem 2rem; }
+  .section-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #d4a056;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .section-heading {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #ffffff, #f0d8b0, #d4a056);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: #8b949e;
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+  }
+  .section-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4a056, transparent);
+    margin: 0 auto 3rem;
+  }
+
+  /* === TRUST STRIP === */
+  .trust-strip {
+    padding: 2.5rem 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(212, 160, 86, 0.06);
+    border-bottom: 1px solid rgba(212, 160, 86, 0.06);
+    background: rgba(212, 160, 86, 0.015);
+  }
+  .trust-track {
+    display: flex;
+    gap: 4rem;
+    animation: scrollLogos 30s linear infinite;
+    width: max-content;
+  }
+  .trust-track img {
+    height: 72px;
+    opacity: 0.35;
+    filter: grayscale(1) brightness(1.8);
+    transition: opacity 0.3s, filter 0.3s;
+  }
+  .trust-track img:hover { opacity: 0.7; filter: grayscale(0.5) brightness(1.2); }
+  @keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* === ABOUT === */
+  .section-about { padding: 7rem 2rem; }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .about-image-wrap {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 160, 86, 0.1);
+  }
+  .about-image-wrap img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    filter: brightness(0.85);
+    transition: filter 0.6s ease;
+  }
+  .about-image-wrap:hover img {
+    filter: brightness(0.95);
+  }
+  .about-text h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(135deg, #ffffff, #f0d8b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #8b949e;
+    margin-bottom: 1rem;
+  }
+  .about-socials {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .about-socials a {
+    color: #8b949e;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(212, 160, 86, 0.15);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  .about-socials a:hover { border-color: #d4a056; color: #d4a056; }
+  .philosophy-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .phil-card {
+    padding: 1.5rem;
+    border: 1px solid rgba(212, 160, 86, 0.08);
+    border-radius: 10px;
+    background: rgba(212, 160, 86, 0.02);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .phil-card:hover { border-color: rgba(212, 160, 86, 0.2); transform: translateY(-3px); }
+  .phil-card h3 {
+    font-size: 1rem;
+    color: #d4a056;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  .phil-card p { font-size: 0.9rem; line-height: 1.6; color: #8b949e; }
+
+  /* === SERVICES === */
+  .section-services { padding: 7rem 2rem; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .service-card {
+    padding: 2rem 1.5rem;
+    border: 1px solid rgba(212, 160, 86, 0.08);
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(212, 160, 86, 0.03) 0%, transparent 100%);
+    transition: border-color 0.3s, transform 0.3s;
+    text-align: center;
+  }
+  .service-card:hover { border-color: rgba(212, 160, 86, 0.25); transform: translateY(-4px); }
+  .service-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .service-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e6edf3;
+    margin-bottom: 0.8rem;
+  }
+  .service-card p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #8b949e;
+    margin-bottom: 1.2rem;
+  }
+  .service-card .card-cta {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #d4a056;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212, 160, 86, 0.3);
+    padding-bottom: 2px;
+    transition: border-color 0.3s;
+  }
+  .service-card .card-cta:hover { border-color: #d4a056; }
+
+  /* === TOPICS === */
+  .section-topics {
+    padding: 7rem 2rem;
+    border-top: 1px solid rgba(212, 160, 86, 0.06);
+  }
+  .topics-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .layout-split .topics-list {
+    max-width: none;
+    margin: 0;
+  }
+  .topic-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(212, 160, 86, 0.06);
+    transition: padding-left 0.3s;
+  }
+  .topic-item:hover { padding-left: 1rem; }
+  .topic-num {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #d4a056;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+  .topic-item h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #e6edf3;
+    margin-bottom: 0.5rem;
+  }
+  .topic-item p { font-size: 0.95rem; line-height: 1.6; color: #8b949e; }
+
+  /* === STATS === */
+  .section-stats {
+    padding: 5rem 2rem;
+    background: rgba(212, 160, 86, 0.02);
+    border-top: 1px solid rgba(212, 160, 86, 0.06);
+    border-bottom: 1px solid rgba(212, 160, 86, 0.06);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .stat-item .stat-number {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #d4a056, #f0d8b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+  }
+  .stat-item .stat-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8b949e;
+    margin-top: 0.3rem;
+  }
+
+  /* === WHY BOOK === */
+  .section-why { padding: 7rem 2rem; }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .layout-split .why-grid {
+    max-width: none;
+    margin: 0;
+  }
+  .why-card {
+    padding: 2rem;
+    border: 1px solid rgba(212, 160, 86, 0.08);
+    border-radius: 10px;
+    background: rgba(212, 160, 86, 0.015);
+    transition: border-color 0.3s;
+  }
+  .why-card:hover { border-color: rgba(212, 160, 86, 0.2); }
+  .why-card h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #e6edf3;
+    margin-bottom: 0.7rem;
+  }
+  .why-card p { font-size: 0.9rem; line-height: 1.6; color: #8b949e; }
+
+  /* === TESTIMONIALS === */
+  .section-testimonials { padding: 7rem 2rem; padding-top: 5rem; border-top: 1px solid rgba(212, 160, 86, 0.06); }
+  .section-testimonials .atmosphere-bg { top: -2rem; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .testimonial-card {
+    padding: 2rem;
+    border: 1px solid rgba(212, 160, 86, 0.08);
+    border-radius: 12px;
+    background: rgba(212, 160, 86, 0.015);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .testimonial-card:hover { border-color: rgba(212, 160, 86, 0.2); transform: translateY(-3px); }
+  .testimonial-quote {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #8b949e;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .testimonial-author img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(212, 160, 86, 0.15);
+  }
+  .testimonial-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #e6edf3;
+  }
+  .testimonial-role {
+    font-size: 0.72rem;
+    color: #6e7681;
+    margin-top: 2px;
+  }
+  .testimonial-badge {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .testimonial-badge span {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #d4a056;
+    border: 1px solid rgba(212, 160, 86, 0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+  }
+
+  /* === CONTACT (merged CTA + form) === */
+  .section-contact {
+    padding: 5rem 2rem 6rem;
+    background: linear-gradient(180deg, rgba(212, 160, 86, 0.04) 0%, transparent 100%);
+    border-top: 1px solid rgba(212, 160, 86, 0.06);
+  }
+  .contact-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  .contact-photo {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 160, 86, 0.25);
+  }
+  .contact-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0.88);
+    transition: filter 0.6s ease;
+  }
+  .contact-photo:hover img { filter: brightness(0.95); }
+  .contact-right .section-heading { text-align: left; margin-bottom: 0.8rem; }
+  .contact-right .contact-intro {
+    font-size: 1.05rem;
+    color: #8b949e;
+    line-height: 1.7;
+    margin: 0 0 2rem;
+  }
+  .contact-details {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: #8b949e;
+    line-height: 1.8;
+  }
+  .contact-details a { color: #d4a056; text-decoration: none; }
+  .contact-details a:hover { text-decoration: underline; }
+  @media (max-width: 900px) {
+    .contact-split { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-photo { max-height: 400px; overflow: hidden; }
+    .contact-photo img { height: 400px; object-fit: cover; object-position: center 20%; }
+    .contact-right .section-heading { text-align: center; }
+    .contact-right .contact-intro { text-align: center; }
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-form input,
+  .contact-form textarea {
+    background: rgba(212, 160, 86, 0.03);
+    border: 1px solid rgba(212, 160, 86, 0.12);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    color: #e6edf3;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: border-color 0.3s;
+    outline: none;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-color: rgba(212, 160, 86, 0.35); }
+  .contact-form textarea { resize: vertical; min-height: 120px; }
+  .contact-form button {
+    align-self: flex-start;
+    padding: 0.8rem 2rem;
+    background: transparent;
+    border: 1px solid rgba(212, 160, 86, 0.4);
+    color: #d4a056;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 2px;
+  }
+  .contact-form button:hover { background: rgba(212, 160, 86, 0.1); border-color: #d4a056; }
+
+  /* === SPOTIFY STANDALONE === */
+  .spotify-section {
+    padding: 3rem 2rem 4rem;
+    border-top: 1px solid rgba(212, 160, 86, 0.06);
+  }
+  .spotify-section .spotify-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .spotify-section .spotify-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #d4a056;
+    margin-bottom: 0.8rem;
+  }
+  .spotify-section .spotify-title {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #e6edf3;
+    margin-bottom: 1.5rem;
+  }
+  .spotify-section iframe {
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  /* === VIDEO EMBED === */
+  .video-embed-section {
+    padding: 5rem 2rem;
+    border-top: 1px solid rgba(212, 160, 86, 0.06);
+  }
+  .video-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 160, 86, 0.1);
+    aspect-ratio: 16/9;
+    position: relative;
+  }
+  .video-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .video-thumb {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .video-thumb::after {
+    content: '';
+    width: 72px; height: 72px;
+    background: rgba(212, 160, 86, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(212, 160, 86, 0.3);
+    transition: transform 0.3s, background 0.3s;
+  }
+  .video-thumb:hover::after { transform: scale(1.1); background: rgba(212, 160, 86, 1); }
+  .video-thumb .play-arrow {
+    position: absolute;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 14px 0 14px 24px;
+    border-color: transparent transparent transparent #04060a;
+    z-index: 3;
+  }
+
+  /* === CINEMATIC PHOTO BREAK === */
+  /* Full-width photo moment between content sections, like a magazine spread */
+  .photo-break {
+    position: relative;
+    width: 100%;
+    height: clamp(300px, 45vh, 550px);
+    overflow: hidden;
+  }
+  .photo-break img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 45%;
+    filter: brightness(0.65) contrast(1.1) saturate(0.3) sepia(0.4);
+    transition: filter 0.6s ease;
+    display: block;
+  }
+  .photo-break:hover img {
+    filter: brightness(0.8) contrast(1.1) saturate(0.5) sepia(0.3);
+  }
+  .photo-break .photo-break-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem 2rem 1.5rem;
+    background: linear-gradient(to top, rgba(4, 6, 10, 0.85) 0%, transparent 100%);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(212, 160, 86, 0.7);
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    .photo-break { height: 300px; }
+  }
+
+  /* === ATMOSPHERIC BACKGROUND (generalized) === */
+  /* Full-section background photo at very low brightness. Text on top. */
+  .section-atmosphere {
+    position: relative;
+    overflow: hidden;
+  }
+  .section-atmosphere > *:not(.atmosphere-bg) {
+    position: relative;
+    z-index: 1;
+  }
+  .atmosphere-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .atmosphere-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45) saturate(0.7);
+    transition: filter 0.8s ease;
+    display: block;
+  }
+  .section-atmosphere:hover .atmosphere-bg img {
+    filter: brightness(0.55) saturate(0.8);
+  }
+
+  /* === TWO-COLUMN PHOTO LAYOUT === */
+  /* Photo as an equal grid partner alongside text content */
+  .layout-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .layout-split-photo {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 160, 86, 0.15);
+  }
+  .layout-split-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85);
+    transition: filter 0.6s ease;
+  }
+  .layout-split-photo:hover img {
+    filter: brightness(0.95);
+  }
+  @media (max-width: 900px) {
+    .layout-split {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .layout-split-photo {
+      aspect-ratio: 16/9;
+      max-height: 350px;
+    }
+    .layout-split .layout-split-photo { order: -1; }
+  }
+
+  /* === PRIME RADIANT ATMOSPHERIC BACKGROUNDS === */
+  .radiant-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  .radiant-bg::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .radiant-bg > * { position: relative; z-index: 1; }
+  .radiant-bg.left::before {
+    background-image: url('assets/prime-radiant-dark1.jpg');
+    mask-image: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 70%);
+    opacity: 0.15;
+  }
+  .radiant-bg.right::before {
+    background-image: url('assets/prime-radiant-dark2.jpg');
+    mask-image: linear-gradient(to left, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 70%);
+    opacity: 0.15;
+  }
+  .radiant-bg.center::before {
+    background-image: url('assets/PRIME-RADIANT.jpg');
+    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%);
+    opacity: 0.12;
+  }
+  .radiant-bg.orig-left::before {
+    background-image: url('assets/PRIME-RADIANT.avif');
+    mask-image: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, transparent 70%);
+    opacity: 0.15;
+  }
+
+  /* === FOOTER === */
+  .site-footer {
+    padding: 3rem 2rem 2rem;
+    border-top: 1px solid rgba(212, 160, 86, 0.06);
+    text-align: center;
+  }
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8b949e;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: #d4a056; }
+  .footer-copy { font-size: 0.75rem; color: #484f58; }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .philosophy-cards { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: 1fr; }
+    .hero-portrait-wrap { width: 300px; height: 300px; left: 50%; top: 30%; }
+    .hero-content { left: 50%; top: 72%; max-width: 90vw; }
+    .hero-cta { bottom: 5%; }
+  }
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- ===== NAV ===== -->
-  <nav class="nav" id="nav">
-    <a href="#hero" class="nav__name">ARAGORN</a>
-    <a href="#hero" class="nav__handle">&gt; ItsMrMetaverse</a>
-  </nav>
-
-  <!-- ===== SECTION DOTS ===== -->
-  <div class="section-dots" id="section-dots" aria-hidden="true">
-    <button class="section-dots__dot" data-section="tunnel" aria-label="Intro"></button>
-    <button class="section-dots__dot" data-section="hero" aria-label="About"></button>
-    <button class="section-dots__dot" data-section="authority" aria-label="Trusted by"></button>
-    <button class="section-dots__dot" data-section="media" aria-label="Media"></button>
-    <button class="section-dots__dot" data-section="topics" aria-label="Topics"></button>
-    <button class="section-dots__dot" data-section="testimonials" aria-label="Testimonials"></button>
-    <button class="section-dots__dot" data-section="work-with-me" aria-label="Work with me"></button>
-    <button class="section-dots__dot" data-section="connect" aria-label="Connect"></button>
+<div class="hero">
+  <canvas id="radiant"></canvas>
+  <div class="hero-portrait-wrap"><div class="hero-portrait"><img src="assets/2.png" alt="Aragorn"></div></div>
+  <div class="hero-content">
+    <div class="hero-label">&gt; ItsMrMetaverse</div>
+    <h1 class="hero-name">ARAGORN</h1>
+    <p class="hero-title"><em>Future Historian</em> · AI Explorer · Singularity Surfer</p>
+    <p class="hero-motto">"AI today is the worst it will ever be."</p>
   </div>
+  <a href="#about" class="hero-cta">Explore</a>
+  <canvas id="radiant-fg"></canvas>
+  <div class="scroll-hint">scroll</div>
+</div>
 
-  <!-- ===== 1. TUNNEL ENTRANCE ===== -->
-  <section id="tunnel">
-    <canvas id="tunnel-canvas"></canvas>
-    <div class="tunnel-name">
-      <div class="tunnel-name__primary">ARAGORN</div>
-      <div class="tunnel-name__handle">&gt; ItsMrMetaverse</div>
-      <div class="tunnel-name__role">Future Historian</div>
+<!-- ═══════════ TRUST STRIP ═══════════ -->
+<section class="trust-strip">
+  <div class="trust-track">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/1-300x141.png" alt="Salesforce">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/2-300x141.png" alt="SAP">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/3-300x141.png" alt="KWF">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/4-300x141.png" alt="ServiceNow">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/5-300x141.png" alt="BNR Nieuwsradio">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/6-300x141.png" alt="Hero">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/7-300x141.png" alt="Oracle">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/8-300x141.png" alt="Innoleaps">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/9-300x141.png" alt="Rabobank">
+    <!-- duplicate set for infinite scroll -->
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/1-300x141.png" alt="Salesforce">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/2-300x141.png" alt="SAP">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/3-300x141.png" alt="KWF">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/4-300x141.png" alt="ServiceNow">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/5-300x141.png" alt="BNR Nieuwsradio">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/6-300x141.png" alt="Hero">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/7-300x141.png" alt="Oracle">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/8-300x141.png" alt="Innoleaps">
+    <img src="https://innovation-network.nl/wp-content/uploads/2025/07/9-300x141.png" alt="Rabobank">
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="section-about" id="about">
+  <div class="section-label">Who is Aragorn?</div>
+  <div class="section-heading">The Future is Already Here.<br>Most People Just Haven't Noticed Yet.</div>
+  <div class="section-divider"></div>
+  <div class="about-grid">
+    <div class="about-image-wrap">
+      <img src="assets/action-shots/DSCF1354-Verbeterd-NR.jpg" alt="Aragorn on stage" loading="lazy">
     </div>
-    <button class="tunnel-skip" id="tunnel-skip">scroll to explore ↓</button>
-  </section>
-
-  <!-- ===== 2. HERO ===== -->
-  <section id="hero" class="section">
-    <div class="hero">
-      <img
-        class="hero__photo"
-        src="src/assets/images/hero-stage.webp"
-        alt="Aragorn Meulendijks on stage"
-        width="380"
-        height="380"
-        loading="eager"
-      >
-      <div class="hero__content">
-        <p class="section__subtitle reveal">&gt; keynote_speaker</p>
-        <h1 class="hero__statement reveal">
-          I help organizations see what's coming — and act before it arrives.
-        </h1>
-        <p class="hero__subtitle reveal">
-          Keynote speaker on AI, XR, exponential change &amp; robotics.
-        </p>
-        <p class="hero__thesis reveal" style="color: var(--color-text-muted); margin-top: var(--space-5); max-width: 600px; line-height: var(--leading-relaxed);">
-          The next decade will compress a century of change into ten years. Most organizations aren't ready. I show them what's coming — and what to do about it.
-        </p>
-        <div style="margin-top: var(--space-6);" class="reveal">
-          <a href="#work-with-me" class="btn btn--primary">Book a Keynote</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 3. AUTHORITY BAR ===== -->
-  <section id="authority" class="section" style="padding-top: 0;">
-    <div class="section__inner">
-      <div class="logo-bar reveal">
-        <span class="logo-bar__label">Spoken at</span>
-        <!-- Logos to be added — Aragorn to provide company/event names -->
-        <span style="color: var(--color-text-dim); font-family: var(--font-mono); font-size: var(--text-sm);">
-          [Company logos will be placed here]
-        </span>
+    <div class="about-text">
+      <h2>Aragorn Meulendijks</h2>
+      <p>For over two decades, I've been tracking the collision between exponential technology and human society. As a Future Historian, I don't predict the future. I map its patterns, trace its signals, and help organizations see what's already emerging before their competitors do.</p>
+      <p>From the first days of commercial VR to the rise of generative AI, I've been in the room where the next wave was building. I've advised boardrooms, challenged conferences, and helped leaders rethink their assumptions about what's coming and how fast it's arriving.</p>
+      <p>My work sits at the intersection of AI, immersive technology, and exponential disruption. I translate complexity into clarity, and urgency into action.</p>
+      <div class="about-socials">
+        <a href="https://www.linkedin.com/in/itsmrmetaverse/" target="_blank">LinkedIn</a>
+        <a href="https://www.youtube.com/@ItsMrMetaverse" target="_blank">YouTube</a>
+        <a href="https://open.spotify.com/playlist/0fEiLNGw5vdpVwqzghEfYv?si=4048dfa1aabf4460" target="_blank">Podcast</a>
       </div>
     </div>
-  </section>
-
-  <!-- ===== 4. MEDIA / SIZZLE REEL ===== -->
-  <section id="media" class="section">
-    <div class="section__inner">
-      <p class="section__subtitle reveal">&gt; on_stage_and_on_air</p>
-      <h2 class="section__title reveal">See It In Action</h2>
-
-      <!-- Video embed — best YouTube keynote clip -->
-      <div class="embed-container reveal" style="margin-bottom: var(--space-8);">
-        <iframe
-          src="about:blank"
-          data-src="https://www.youtube.com/embed/VIDEO_ID"
-          title="Aragorn Meulendijks keynote highlight"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy"
-        ></iframe>
-      </div>
-
-      <div style="text-align: center; margin-bottom: var(--space-8);" class="reveal">
-        <a href="#work-with-me" class="btn btn--primary">Book a Keynote</a>
-      </div>
-
-      <!-- Podcasts -->
-      <div class="embed-grid">
-        <div class="card reveal">
-          <p class="card__tag">&gt; podcast_en</p>
-          <h3 class="card__title">Singularity Surfers</h3>
-          <div class="embed-container" style="padding-bottom: 152px; margin-top: var(--space-4);">
-            <iframe
-              src="about:blank"
-              data-src="https://open.spotify.com/embed/playlist/4A6kiqGNbtfBjqvBLCbBBB?theme=0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              style="border-radius: 12px;"
-            ></iframe>
-          </div>
-        </div>
-        <div class="card reveal">
-          <p class="card__tag">&gt; podcast_nl</p>
-          <h3 class="card__title">Singularity Surfers NL</h3>
-          <div class="embed-container" style="padding-bottom: 152px; margin-top: var(--space-4);">
-            <iframe
-              src="about:blank"
-              data-src="https://open.spotify.com/embed/playlist/0fEiLNGw5vdpVwqzghEfYv?theme=0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              style="border-radius: 12px;"
-            ></iframe>
-          </div>
-        </div>
-      </div>
-
-      <!-- Substack -->
-      <div class="card reveal" style="margin-top: var(--space-6); text-align: center;">
-        <p class="card__tag">&gt; newsletter</p>
-        <h3 class="card__title">ItsMrMetaverse on Substack</h3>
-        <p class="card__text">Deep dives on the forces reshaping our world.</p>
-        <a href="https://itsmrmetaverse.substack.com/" target="_blank" rel="noopener" class="btn btn--secondary">Read on Substack →</a>
-      </div>
+  </div>
+  <div class="philosophy-cards">
+    <div class="phil-card">
+      <h3>Vision</h3>
+      <p>Technology is not the destination. It's the lens through which we see what's actually changing: power structures, business models, human behavior, and the rules of competition.</p>
     </div>
-  </section>
-
-  <!-- ===== 5. SPEAKING TOPICS ===== -->
-  <section id="topics" class="section">
-    <div class="section__inner">
-      <p class="section__subtitle reveal">&gt; speaking_topics</p>
-      <h2 class="section__title reveal">What I Speak About</h2>
-
-      <div class="grid-2 stagger">
-
-        <!-- Topic 1: AI -->
-        <div class="card bracketed reveal">
-          <p class="card__tag">&gt; artificial_intelligence</p>
-          <h3 class="card__title">AI &amp; The Agent Economy</h3>
-          <p class="card__text">Your industry is about to be reshaped by autonomous AI agents. This isn't a distant future — it's already happening.</p>
-          <ul class="takeaway-list">
-            <li>How AI agents are replacing workflows, not just tasks</li>
-            <li>What the agent economy means for your organization's competitive position</li>
-            <li>Concrete steps to prepare your team for an AI-augmented world</li>
-          </ul>
-          <a href="#work-with-me" class="btn btn--secondary btn--small">Book This Talk</a>
-        </div>
-
-        <!-- Topic 2: XR -->
-        <div class="card bracketed reveal">
-          <p class="card__tag">&gt; extended_reality</p>
-          <h3 class="card__title">XR &amp; The Metaverse</h3>
-          <p class="card__text">Spatial computing isn't science fiction anymore. Apple, Meta, and a wave of startups are building the next computing platform.</p>
-          <ul class="takeaway-list">
-            <li>Where XR creates real business value today (not just hype)</li>
-            <li>The convergence of AR, VR, and AI into spatial intelligence</li>
-            <li>How to evaluate metaverse strategies without falling for buzzwords</li>
-          </ul>
-          <a href="#work-with-me" class="btn btn--secondary btn--small">Book This Talk</a>
-        </div>
-
-        <!-- Topic 3: Exponential Change -->
-        <div class="card bracketed reveal">
-          <p class="card__tag">&gt; exponential_change</p>
-          <h3 class="card__title">Exponential Change</h3>
-          <p class="card__text">We're wired to think linearly, but the world is changing exponentially. That gap is where organizations either thrive or get disrupted.</p>
-          <ul class="takeaway-list">
-            <li>Why exponential trends are invisible until they're overwhelming</li>
-            <li>A framework for spotting and riding exponential curves</li>
-            <li>Case studies of organizations that adapted — and ones that didn't</li>
-          </ul>
-          <a href="#work-with-me" class="btn btn--secondary btn--small">Book This Talk</a>
-        </div>
-
-        <!-- Topic 4: Robotics -->
-        <div class="card bracketed reveal">
-          <p class="card__tag">&gt; robotics</p>
-          <h3 class="card__title">Robotics &amp; Physical AI</h3>
-          <p class="card__text">AI is leaving the screen and entering the physical world. Humanoid robots, autonomous vehicles, and smart infrastructure are here.</p>
-          <ul class="takeaway-list">
-            <li>The state of humanoid robotics and what it means for labor markets</li>
-            <li>How physical AI differs from digital AI — and why it matters more</li>
-            <li>Preparing your workforce for human-robot collaboration</li>
-          </ul>
-          <a href="#work-with-me" class="btn btn--secondary btn--small">Book This Talk</a>
-        </div>
-
-      </div>
+    <div class="phil-card">
+      <h3>Philosophy</h3>
+      <p>The future doesn't arrive evenly. Those who see the patterns early don't just adapt. They set the terms. My job is to make those patterns visible before the window closes.</p>
     </div>
-  </section>
+    <div class="phil-card">
+      <h3>Mission</h3>
+      <p>To arm decision-makers with the foresight to act while others are still debating. Not through hype, but through evidence, pattern recognition, and honest assessment of what's at stake.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- ===== 6. TESTIMONIALS ===== -->
-  <section id="testimonials" class="section">
-    <div class="section__inner">
-      <p class="section__subtitle reveal">&gt; what_they_say</p>
-      <h2 class="section__title reveal">From Event Organizers</h2>
+<!-- ═══════════ SERVICES ═══════════ -->
+<section class="section-services" id="services">
+  <div class="section-label">What I Offer</div>
+  <div class="section-heading">Built for Impact</div>
+  <div class="section-subtitle">Every engagement is designed to leave your audience thinking differently about what's coming and what they need to do about it.</div>
+  <div class="section-divider"></div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">&#9889;</span>
+      <h3>Keynote Speaking</h3>
+      <p>High-energy, visually immersive keynotes that combine live demos, real-world case studies, and sharp analysis. Audiences don't just listen. They leave with a shifted perspective and a sense of urgency.</p>
+      <a href="#contact" class="card-cta">Book a Keynote</a>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">&#127897;</span>
+      <h3>Podcast</h3>
+      <p>ItsMrMetaverse: deep conversations with the builders, thinkers, and disruptors shaping what comes next. AI, XR, spatial computing, and the forces rewriting the rules of business and society.</p>
+      <a href="https://open.spotify.com/playlist/0fEiLNGw5vdpVwqzghEfYv?si=4048dfa1aabf4460" target="_blank" class="card-cta">Listen on Spotify</a>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">&#128301;</span>
+      <h3>Futurist for Hire</h3>
+      <p>Strategic advisory for organizations navigating exponential change. Trend analysis, scenario planning, technology roadmaps, and custom workshops tailored to your industry's specific disruption vectors.</p>
+      <a href="#contact" class="card-cta">Start a Conversation</a>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">&#127860;</span>
+      <h3>Innovation Dinner</h3>
+      <p>Exclusive roundtable sessions for C-suite leaders. Intimate, off-the-record conversations about emerging technology, competitive threats, and strategic opportunities. Limited to 12 seats per event.</p>
+      <a href="https://innovation-network.nl/innovation-dinner/" target="_blank" class="card-cta">Request an Invite</a>
+    </div>
+  </div>
+</section>
 
-      <div class="grid-2 stagger">
-        <div class="testimonial reveal">
-          <p class="testimonial__quote">Aragorn captivated our audience from the first minute. His ability to make complex technology accessible and actionable is remarkable.</p>
-          <p class="testimonial__author">— Event Organizer</p>
-          <p class="testimonial__role">Testimonial source to be confirmed</p>
-        </div>
-        <div class="testimonial reveal">
-          <p class="testimonial__quote">One of the most engaging speakers we've had. The audience was buzzing with ideas for hours after his keynote.</p>
-          <p class="testimonial__author">— Event Organizer</p>
-          <p class="testimonial__role">Testimonial source to be confirmed</p>
-        </div>
-        <div class="testimonial reveal">
-          <p class="testimonial__quote">Aragorn doesn't just talk about the future — he makes you feel it. Our team left with a completely new perspective on where our industry is heading.</p>
-          <p class="testimonial__author">— Event Organizer</p>
-          <p class="testimonial__role">Testimonial source to be confirmed</p>
-        </div>
-        <div class="testimonial reveal">
-          <p class="testimonial__quote">Professional, inspiring, and deeply knowledgeable. Aragorn exceeded all our expectations.</p>
-          <p class="testimonial__author">— Event Organizer</p>
-          <p class="testimonial__role">Testimonial source to be confirmed</p>
+<!-- ═══════════ CINEMATIC BREAK ═══════════ -->
+<div class="photo-break">
+  <img src="assets/action-shots/20250617-Tomdoms_1317894.jpg" alt="Aragorn delivering keynote to packed audience" loading="lazy">
+  <div class="photo-break-caption">Delivering keynotes across 15+ countries</div>
+</div>
+
+<!-- ═══════════ PODCAST ═══════════ -->
+<section class="spotify-section">
+  <div class="spotify-inner">
+    <div class="spotify-label">The Podcast</div>
+    <div class="spotify-title">ItsMrMetaverse. Deep conversations with the builders shaping what comes next.</div>
+    <iframe src="https://open.spotify.com/embed/playlist/0fEiLNGw5vdpVwqzghEfYv?utm_source=generator&theme=0" height="352" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- ═══════════ TOPICS ═══════════ -->
+<section class="section-topics radiant-bg left" id="topics">
+  <div class="section-label">Areas of Expertise</div>
+  <div class="section-heading">Three Forces Reshaping Everything</div>
+  <div class="section-divider"></div>
+  <div class="layout-split">
+    <div class="topics-list">
+      <div class="topic-item">
+        <span class="topic-num">01</span>
+        <div>
+          <h3>Artificial Intelligence</h3>
+          <p>From generative models to autonomous agents, AI is rewriting the operating system of every industry. I help organizations cut through the noise, understand what's real, what's hype, and what's about to land on their doorstep whether they're ready or not.</p>
         </div>
       </div>
-
-      <!-- Metrics row -->
-      <div class="metrics reveal" style="margin-top: var(--space-8);">
-        <div class="metric">
-          <div class="metric__value">200+</div>
-          <div class="metric__label">Keynotes</div>
+      <div class="topic-item">
+        <span class="topic-num">02</span>
+        <div>
+          <h3>Immersive Technology</h3>
+          <p>Spatial computing, mixed reality, and the next generation of human-computer interaction. The interface is disappearing. What replaces it will transform how we work, learn, create, and connect. I've been tracking this shift since before it had a name.</p>
         </div>
-        <div class="metric">
-          <div class="metric__value">15+</div>
-          <div class="metric__label">Countries</div>
-        </div>
-        <div class="metric">
-          <div class="metric__value">50K+</div>
-          <div class="metric__label">Audience Reached</div>
+      </div>
+      <div class="topic-item">
+        <span class="topic-num">03</span>
+        <div>
+          <h3>Exponential Disruption</h3>
+          <p>Technology doesn't evolve linearly. It compounds. The organizations that understand exponential curves, convergence effects, and second-order consequences are the ones that survive the next decade. The rest become case studies.</p>
         </div>
       </div>
     </div>
-  </section>
+    <div class="layout-split-photo">
+      <img src="assets/action-shots/WhatsApp Image 2024-11-21 at 15.47.46_bad25690.jpg" alt="Aragorn keynote presentation" loading="lazy">
+    </div>
+  </div>
+</section>
 
-  <!-- ===== 7. WORK WITH ME ===== -->
-  <section id="work-with-me" class="section">
-    <div class="section__inner">
-      <p class="section__subtitle reveal">&gt; work_with_me</p>
-      <h2 class="section__title reveal">Let's Work Together</h2>
-      <p class="reveal" style="color: var(--color-text-muted); max-width: 600px; margin-bottom: var(--space-8); line-height: var(--leading-relaxed);">
-        One vision, multiple paths in. Whether you're booking a keynote, joining an executive program, or exploring innovation partnerships.
-      </p>
+<!-- ═══════════ STATS ═══════════ -->
+<section class="section-stats" id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-number" data-target="22">0</span>
+      <span class="stat-label">Years in Tech</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="300">0</span>
+      <span class="stat-label">Keynotes Delivered</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="15600" data-suffix="" data-display="15.6K">0</span>
+      <span class="stat-label">LinkedIn Followers</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="3500" data-suffix="" data-display="3.5K">0</span>
+      <span class="stat-label">YouTube Subscribers</span>
+    </div>
+  </div>
+</section>
 
-      <div class="grid-2 stagger">
+<!-- ═══════════ VIDEO ═══════════ -->
+<section class="video-embed-section">
+  <div class="video-wrap" id="videoWrap">
+    <div class="video-thumb" id="videoThumb" style="background-image: url('https://img.youtube.com/vi/88YnIYVpIsU/maxresdefault.jpg')">
+      <span class="play-arrow"></span>
+    </div>
+  </div>
+</section>
 
-        <!-- Keynote (primary) -->
-        <div class="card card--primary reveal" style="grid-column: 1 / -1;">
-          <p class="card__tag">&gt; keynote_speaking</p>
-          <h3 class="card__title" style="font-size: var(--text-2xl);">Book a Keynote</h3>
-          <p class="card__text">Available for conferences, corporate events, and leadership summits worldwide.</p>
-          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center;">
-            <a href="#" class="btn btn--primary" id="btn-speakers-academy">Netherlands &amp; Benelux — Speakers Academy</a>
-            <a href="#contact-form" class="btn btn--secondary">International — Contact Directly</a>
-          </div>
-          <p style="margin-top: var(--space-3); font-size: var(--text-sm); color: var(--color-text-dim);">
-            Based in the Netherlands. Available globally.
-          </p>
-        </div>
-
-        <!-- Exponential Executives -->
-        <div class="card reveal">
-          <p class="card__tag">&gt; executive_program</p>
-          <h3 class="card__title">Exponential Executives</h3>
-          <p class="card__text">An executive program for leaders navigating exponential change. Masterclasses, peer learning, and strategic foresight.</p>
-          <a href="https://www.exponential-executives.com" target="_blank" rel="noopener" class="btn btn--secondary btn--small">Learn More →</a>
-        </div>
-
-        <!-- Innovation Network -->
-        <div class="card reveal">
-          <p class="card__tag">&gt; innovation</p>
-          <h3 class="card__title">Innovation Network</h3>
-          <p class="card__text">Connecting forward-thinking leaders through Innovation Dinners and collaborative partnerships.</p>
-          <a href="https://www.innovation-network.nl" target="_blank" rel="noopener" class="btn btn--secondary btn--small">Learn More →</a>
-        </div>
-
-        <!-- Vibe Code Masterclass -->
-        <div class="card reveal">
-          <p class="card__tag">&gt; masterclass</p>
-          <h3 class="card__title">Vibe Code Masterclass</h3>
-          <p class="card__text">Learn to build with AI — hands-on masterclass for professionals who want to create with code, powered by AI.</p>
-          <a href="https://www.vibecodemasterclass.nl" target="_blank" rel="noopener" class="btn btn--secondary btn--small">Learn More →</a>
-        </div>
-
+<!-- ═══════════ WHY BOOK ═══════════ -->
+<section class="section-why radiant-bg right" id="why">
+  <div class="section-label">Why Organizations Book Aragorn</div>
+  <div class="section-heading">Not Just a Speaker. A Strategic Advantage.</div>
+  <div class="section-divider"></div>
+  <div class="layout-split">
+    <div class="why-grid">
+      <div class="why-card">
+        <h4>Pattern Recognition</h4>
+        <p>Two decades of tracking technology waves means I see the signal before the noise. Your audience gets early warning, not yesterday's headlines repackaged as insight.</p>
       </div>
-
-      <!-- Contact form -->
-      <div id="contact-form" class="bracketed reveal" style="margin-top: var(--space-10); max-width: 600px;">
-        <p class="section__subtitle">&gt; get_in_touch</p>
-        <h3 style="font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-5);">International Booking &amp; Inquiries</h3>
-        <form class="form" action="https://formspree.io/f/FORM_ID" method="POST">
-          <div class="form__field">
-            <label class="form__label" for="name">Name</label>
-            <input class="form__input" type="text" id="name" name="name" required>
-          </div>
-          <div class="form__field">
-            <label class="form__label" for="email">Email</label>
-            <input class="form__input" type="email" id="email" name="email" required>
-          </div>
-          <div class="form__field">
-            <label class="form__label" for="event-date">Event Date</label>
-            <input class="form__input" type="date" id="event-date" name="event-date">
-          </div>
-          <div class="form__field">
-            <label class="form__label" for="message">Message</label>
-            <textarea class="form__textarea" id="message" name="message" placeholder="Tell me about your event..."></textarea>
-          </div>
-          <button type="submit" class="btn btn--primary">Send Inquiry</button>
-        </form>
-        <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-dim);">
-          Or email directly: <a href="mailto:hello@itsmrmetaverse.com" style="color: var(--color-accent);">hello@itsmrmetaverse.com</a>
-        </p>
+      <div class="why-card">
+        <h4>Clarity Over Hype</h4>
+        <p>No buzzword bingo. No vague promises about "the future of work." I deliver concrete analysis, real examples, and honest assessment of what matters and what doesn't.</p>
       </div>
-
-      <!-- Media kit -->
-      <div class="reveal" style="margin-top: var(--space-8); text-align: center;">
-        <a href="#" class="btn btn--secondary">Download Media Kit (Coming Soon)</a>
+      <div class="why-card">
+        <h4>Audience Activation</h4>
+        <p>A keynote that doesn't change behavior is just entertainment. Every session is designed to shift perspective and create urgency. People leave ready to act, not just impressed.</p>
+      </div>
+      <div class="why-card">
+        <h4>Tailored to Your World</h4>
+        <p>Every engagement is customized. I research your industry, your competitive landscape, and your audience's blind spots. The result feels personal because it is.</p>
       </div>
     </div>
-  </section>
+    <div class="layout-split-photo">
+      <img src="assets/action-shots/Unilever Foodsolutions-264.jpg" alt="Aragorn presenting at Unilever" loading="lazy">
+    </div>
+  </div>
+</section>
 
-  <!-- ===== 8. STAY CONNECTED ===== -->
-  <section id="connect" class="section">
-    <div class="section__inner" style="text-align: center;">
-      <p class="section__subtitle reveal">&gt; stay_connected</p>
-      <h2 class="section__title reveal">Stay Connected</h2>
-
-      <div class="social-links reveal" style="justify-content: center; margin-bottom: var(--space-8);">
-        <a href="https://www.linkedin.com/in/aragornmeulendijks/" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
-        <a href="https://www.youtube.com/@ItsMrMetaverse2046" target="_blank" rel="noopener" class="social-link">YouTube</a>
-        <a href="https://x.com/ItsMrMetaverse" target="_blank" rel="noopener" class="social-link">X</a>
-        <a href="https://www.instagram.com/itsmrmetaverse/" target="_blank" rel="noopener" class="social-link">Instagram</a>
-        <a href="https://itsmrmetaverse.substack.com/" target="_blank" rel="noopener" class="social-link">Substack</a>
-        <a href="https://open.spotify.com/show/ItsMrMetaverse" target="_blank" rel="noopener" class="social-link">Spotify</a>
-      </div>
-
-      <!-- Extended Mind Blueprint -->
-      <div class="card reveal" style="max-width: 500px; margin: 0 auto var(--space-8);">
-        <p class="card__tag">&gt; extended_mind</p>
-        <h3 class="card__title">Extended Mind Blueprint</h3>
-        <p class="card__text">The infrastructure behind how I work — my AI-augmented cognitive architecture. A living document on building a second brain with AI.</p>
-        <a href="https://extended-mind-blueprint.itsmrmetaverse.com/" target="_blank" rel="noopener" class="btn btn--secondary btn--small">Explore the Blueprint →</a>
-      </div>
-
-      <!-- Newsletter -->
-      <div class="reveal">
-        <p style="color: var(--color-text-muted); margin-bottom: var(--space-4);">Get my latest thinking delivered to your inbox.</p>
-        <a href="https://itsmrmetaverse.substack.com/subscribe" target="_blank" rel="noopener" class="btn btn--secondary">Subscribe on Substack</a>
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section class="section-testimonials radiant-bg orig-left section-atmosphere" id="testimonials">
+  <div class="atmosphere-bg">
+    <img src="assets/action-shots/062_EnriqueMeesters_MET-AMS_WEB_20231102.jpg" alt="Conference keynote" loading="lazy">
+  </div>
+  <div class="section-label">What People Say</div>
+  <div class="section-heading">Trusted by Leaders Across Industries</div>
+  <div class="section-divider"></div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"Aragorn has exceptional knowledge of the Tech landscape. With passion, energy and humor he can translate the sometimes complex topic of new tech to a broad audience. He can translate future tech to applicable business models and thereby challenges his audience to think beyond boundaries. I have experienced Aragorn as a very pleasant business partner and would recommend working with him anytime."</p>
+      <div class="testimonial-author">
+        <div>
+          <div class="testimonial-name">Roger Verdurmen</div>
+          <div class="testimonial-role">Strategy Director &amp; Manager, DPG Brandstudio</div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div style="margin-bottom: var(--space-4);">
-      <a href="#work-with-me" class="btn btn--primary btn--small">Book a Keynote</a>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"Aragorn is a force of nature. His ability to take complex, emerging technology and make it tangible, relevant, and exciting for any audience is truly rare. Whether on stage or in a boardroom, he doesn't just inform, he inspires action. Working with him is a masterclass in turning foresight into strategy."</p>
+      <div class="testimonial-author">
+        <div>
+          <div class="testimonial-name">Elisabeth van de Weerdt</div>
+          <div class="testimonial-role">Business Strategy Manager, AbbVie</div>
+        </div>
+      </div>
     </div>
-    <p class="footer__copy">
-      &copy; 2026 <span class="chrome-text">ARAGORN</span> / <span class="handle-text">ItsMrMetaverse</span>
-    </p>
-  </footer>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"What sets Aragorn apart is that he doesn't just talk about the future. He brings it into the room. His keynotes are immersive, thought-provoking, and tailored to the audience. He challenged our leadership team to rethink their assumptions about AI and spatial computing in ways that are still shaping our strategy months later."</p>
+      <div class="testimonial-author">
+        <div>
+          <div class="testimonial-name">Ren&eacute; Zeedijk</div>
+          <div class="testimonial-role">Adjunct Directeur Digital Sales &amp; Specialisten / Sales Director SIM, DPG Media</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"I had the pleasure to attend one of Aragorn's keynotes at Web Summit and it was one of the most engaging tech talks I've attended. He has a gift for making the audience feel like they're discovering the future alongside him. His depth of knowledge combined with his approachable style makes him an exceptional speaker."</p>
+      <div class="testimonial-author">
+        <div>
+          <div class="testimonial-name">Vytautas Ka&scaron;&#x117;ta</div>
+          <div class="testimonial-role">Executive Director SuperHOW Group &amp; Vice President Crypto Economy Organisation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Main JS -->
-  <script type="module" src="src/js/main.js"></script>
+<!-- ═══════════ CONTACT (merged CTA + form) ═══════════ -->
+<section class="section-contact" id="contact">
+  <div class="contact-split">
+    <div class="contact-photo">
+      <img src="assets/action-shots/DSCF2673.jpg" alt="Aragorn - doorway portrait" loading="lazy">
+    </div>
+    <div class="contact-right">
+      <div class="section-heading">Ready to See What's Coming?</div>
+      <p class="contact-intro">Whether it's a keynote that rewires how your audience thinks about technology, or a strategic session that reshapes your roadmap, the conversation starts here.</p>
+      <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); var n=this.elements.name.value, e=this.elements.email.value, o=this.elements.org.value, m=this.elements.msg.value; var subj=encodeURIComponent('Website inquiry from '+n+(o?' ('+o+')':'')); var body=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\nOrganization: '+(o||'N/A')+'\n\n'+m); window.location.href='mailto:aragorn@itsmrmetaverse.com?subject='+subj+'&body='+body;">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <input type="text" name="org" placeholder="Organization">
+        <textarea name="msg" placeholder="Tell me about your event or project"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div class="contact-details">
+        <a href="mailto:aragorn@itsmrmetaverse.com">aragorn@itsmrmetaverse.com</a><br>
+        Based in the Netherlands. Available worldwide.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- removed: photo bar after contact -->
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#topics">Topics</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.linkedin.com/in/itsmrmetaverse/" target="_blank">LinkedIn</a>
+    <a href="https://www.youtube.com/@ItsMrMetaverse" target="_blank">YouTube</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 ItsMrMetaverse. All rights reserved.</p>
+</footer>
+
+<script>
+// === PRIME RADIANT — Sandogram Particle System ===
+// Inspired by Foundation (Apple TV): non-emissive particles that catch light,
+// forming mathematical structures (Fibonacci spirals, golden ratio curves).
+// Particles coalesce from chaos into structure, then dissolve and reform.
+
+const canvas = document.getElementById('radiant');
+const ctx = canvas.getContext('2d');
+const canvasFg = document.getElementById('radiant-fg');
+const ctxFg = canvasFg.getContext('2d');
+
+let width, height;
+const PHI = (1 + Math.sqrt(5)) / 2; // Golden ratio
+const TAU = Math.PI * 2;
+
+// --- Adaptive Performance ---
+function detectPerformanceTier() {
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const screenArea = screen.width * screen.height;
+  const cores = navigator.hardwareConcurrency || 2;
+  const memory = navigator.deviceMemory || 4; // GB, Chrome-only
+  // WebGL GPU heuristic
+  let gpuTier = 1;
+  try {
+    const gl = document.createElement('canvas').getContext('webgl');
+    if (gl) {
+      const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+      if (dbg) {
+        const renderer = gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL).toLowerCase();
+        if (/rtx|radeon rx 7|radeon rx 6[89]|m[23] (pro|max|ultra)|apple gpu/i.test(renderer)) gpuTier = 3;
+        else if (/gtx 1[06]|radeon rx 6[0-7]|radeon rx 5|m[12]|iris xe|arc a/i.test(renderer)) gpuTier = 2;
+      }
+    }
+  } catch(e) {}
+
+  if (isMobile) return { particles: 3000, antiClump: false, tier: 'mobile' };
+  if (gpuTier >= 3 && cores >= 8) return { particles: 16000, antiClump: true, tier: 'high' };
+  if (gpuTier >= 2 || (cores >= 6 && screenArea > 2000000)) return { particles: 8000, antiClump: false, tier: 'mid' };
+  return { particles: 5000, antiClump: false, tier: 'low' };
+}
+
+const PERF = detectPerformanceTier();
+
+// --- Configuration ---
+const PARTICLE_COUNT = PERF.particles;
+const ATTRACTOR_STRENGTH = 0.004;
+const DAMPING = 0.94;
+const MOUSE_RADIUS = 120;
+const MOUSE_DISPERSE = 0.4;
+const MIN_SEPARATION = 4;
+const SEPARATION_FORCE = 0.2;
+const USE_ANTI_CLUMP = PERF.antiClump;
+
+// --- State ---
+let particles = [];
+let mouse = { x: -1000, y: -1000, prevX: -1000, prevY: -1000, speed: 0 };
+let time = 0;
+let currentPattern = 0;
+let patternTimer = 0;
+const PATTERN_DURATION = 480;
+const TRANSITION_FRAMES = 60;  // Faster transitions (1s instead of 2s)
+
+// --- Mathematical attractor patterns (3D only) ---
+function doubleHelix(i, total, cx, cy, scale) {
+  // 3D helix with slow rotation, slanted ~35 degrees
+  const rot = time * 0.002;
+  const TILT = 0.61; // ~35 degrees in radians
+  const cosTilt = Math.cos(TILT);
+  const sinTilt = Math.sin(TILT);
+  const t = (i / total) * 2 - 1; // -1 to 1
+  const strand = i % 2;
+  const phase = t * 4 * Math.PI + (strand * Math.PI);
+  // 3D coordinates
+  const px = Math.cos(phase) * 0.35;
+  const py = t * 1.1;
+  const pz = Math.sin(phase) * 0.35;
+  // Apply tilt (rotate around Z axis)
+  const tx = px * cosTilt - py * sinTilt;
+  const ty = px * sinTilt + py * cosTilt;
+  // Rotate around Y axis
+  const cosR = Math.cos(rot);
+  const sinR = Math.sin(rot);
+  const rx = tx * cosR - pz * sinR;
+  const rz = tx * sinR + pz * cosR;
+  // Perspective projection
+  const fov = 3;
+  const depth = fov / (fov + rz);
+  return {
+    x: cx + rx * scale * depth,
+    y: cy + ty * scale * depth
+  };
+}
+
+function networkWave(i, total, cx, cy, scale) {
+  // Flowing data network: interconnected nodes forming a sinusoidal mesh wave
+  const rot = time * 0.0012;
+  const COLS = Math.ceil(Math.sqrt(total * 2.2));
+  const ROWS = Math.ceil(total / COLS);
+  const col = i % COLS;
+  const row = Math.floor(i / COLS);
+  const u = col / (COLS - 1);       // 0..1 along wave
+  const v = row / (ROWS - 1);       // 0..1 across depth
+
+  // Sinusoidal wave flowing left-to-right
+  const wavePhase = u * Math.PI * 3 + time * 0.0015;
+  const amplitude = 0.35 + Math.sin(v * Math.PI) * 0.1;
+  const px = (u - 0.5) * 2.4;
+  const py = -Math.sin(wavePhase) * amplitude;
+  const pz = (v - 0.5) * 1.2;
+
+  // Secondary ripple for organic feel
+  const ripple = Math.sin(u * 12 + v * 8 + time * 0.002) * 0.025;
+  const pyFinal = py + ripple;
+
+  // Node emphasis: every Nth particle gets pulled toward grid intersections
+  const nodeGrid = 5;
+  const isNode = (col % nodeGrid === 0) && (row % nodeGrid === 0);
+  const nodeScale = isNode ? 1.0 : 0.97; // nodes sit slightly proud
+
+  // Rotate around Y axis
+  const cosR = Math.cos(rot);
+  const sinR = Math.sin(rot);
+  const rx = px * cosR - pz * sinR;
+  const rz = px * sinR + pz * cosR;
+
+  // Gentle tilt
+  const TILT = 0.3;
+  const cosT = Math.cos(TILT);
+  const sinT = Math.sin(TILT);
+  const ry = pyFinal * cosT - rz * sinT;
+  const rz2 = pyFinal * sinT + rz * cosT;
+
+  const fov = 3;
+  const depth = fov / (fov + rz2);
+  return {
+    x: cx + rx * scale * 0.55 * depth * nodeScale,
+    y: cy + ry * scale * 0.55 * depth * nodeScale
+  };
+}
+
+function dnaHelix(i, total, cx, cy, scale) {
+  // DNA double helix with connecting rungs, slanted ~35 degrees, rotating
+  const rot = time * 0.002;
+  const TILT = 0.61; // ~35 degrees
+  const cosTilt = Math.cos(TILT);
+  const sinTilt = Math.sin(TILT);
+  const RUNG_RATIO = 5; // every 5th particle is a rung connector
+  const isRung = (i % RUNG_RATIO) === 0;
+
+  if (isRung) {
+    // Rung particles: horizontal bars connecting the two strands
+    const rungIdx = Math.floor(i / RUNG_RATIO);
+    const totalRungs = Math.floor(total / RUNG_RATIO);
+    const t = (rungIdx / totalRungs) * 2 - 1;
+    const phase = t * 4 * Math.PI;
+    // Position along the rung (interpolate between strand 0 and strand 1)
+    const rungPos = (i * 0.618) % 1; // golden ratio spread along rung
+    const px0 = Math.cos(phase) * 0.35;
+    const px1 = Math.cos(phase + Math.PI) * 0.35;
+    const pz0 = Math.sin(phase) * 0.35;
+    const pz1 = Math.sin(phase + Math.PI) * 0.35;
+    const px = px0 + (px1 - px0) * rungPos;
+    const py = t * 1.1;
+    const pz = pz0 + (pz1 - pz0) * rungPos;
+    // Apply tilt
+    const tx = px * cosTilt - py * sinTilt;
+    const ty = px * sinTilt + py * cosTilt;
+    // Rotate around Y
+    const cosR = Math.cos(rot);
+    const sinR = Math.sin(rot);
+    const rx = tx * cosR - pz * sinR;
+    const rz = tx * sinR + pz * cosR;
+    const fov = 3;
+    const depth = fov / (fov + rz);
+    return { x: cx + rx * scale * depth, y: cy + ty * scale * depth };
+  } else {
+    // Strand particles: two intertwined helices
+    const strandI = i - Math.floor(i / RUNG_RATIO); // adjust index
+    const strandTotal = total - Math.floor(total / RUNG_RATIO);
+    const t = (strandI / strandTotal) * 2 - 1;
+    const strand = strandI % 2;
+    const phase = t * 4 * Math.PI + (strand * Math.PI);
+    const px = Math.cos(phase) * 0.35;
+    const py = t * 1.1;
+    const pz = Math.sin(phase) * 0.35;
+    // Apply tilt
+    const tx = px * cosTilt - py * sinTilt;
+    const ty = px * sinTilt + py * cosTilt;
+    // Rotate around Y
+    const cosR = Math.cos(rot);
+    const sinR = Math.sin(rot);
+    const rx = tx * cosR - pz * sinR;
+    const rz = tx * sinR + pz * cosR;
+    const fov = 3;
+    const depth = fov / (fov + rz);
+    return { x: cx + rx * scale * depth, y: cy + ty * scale * depth };
+  }
+}
+
+// Precompute Lorenz attractor points (expensive integration done once)
+const LORENZ_POINTS = [];
+{
+  let lx = 0.1, ly = 0, lz = 0;
+  const dt3 = 0.005;
+  const totalSteps = 5000;
+  for (let s = 0; s < totalSteps; s++) {
+    const dx = 10 * (ly - lx);
+    const dy = lx * (28 - lz) - ly;
+    const dz = lx * ly - (8 / 3) * lz;
+    lx += dx * dt3;
+    ly += dy * dt3;
+    lz += dz * dt3;
+    LORENZ_POINTS.push([lx / 25, (lz - 25) / 25, ly / 25]);
+  }
+}
+
+function lorenzAttractor(i, total, cx, cy, scale) {
+  // 3D Lorenz butterfly from precomputed table, rotating
+  const rot = time * 0.002;
+  const idx = Math.floor((i / total) * (LORENZ_POINTS.length - 1));
+  const pt = LORENZ_POINTS[idx];
+  const nx = pt[0], ny = pt[1], nz = pt[2];
+  // Rotate around Y
+  const cosR = Math.cos(rot);
+  const sinR = Math.sin(rot);
+  const rx = nx * cosR - nz * sinR;
+  const rz = nx * sinR + nz * cosR;
+  const fov = 3;
+  const depth = fov / (fov + rz);
+  return {
+    x: cx + rx * scale * 0.75 * depth,
+    y: cy + ny * scale * 0.7 * depth
+  };
+}
+
+function mobiusStrip(i, total, cx, cy, scale) {
+  // 3D Möbius strip — single-sided surface, rotating
+  const rot = time * 0.0025;
+  const t = (i / total);
+  const u = t * TAU; // around the strip
+  const v = (((i * 7) % 13) / 13) * 2 - 1; // across the strip width [-1,1]
+  const halfWidth = 0.3;
+  // Möbius parametric
+  const px = (1 + halfWidth * v * Math.cos(u / 2)) * Math.cos(u);
+  const py = (1 + halfWidth * v * Math.cos(u / 2)) * Math.sin(u);
+  const pz = halfWidth * v * Math.sin(u / 2);
+  // Rotate
+  const cosR = Math.cos(rot);
+  const sinR = Math.sin(rot);
+  const rx = px * cosR - pz * sinR;
+  const rz = px * sinR + pz * cosR;
+  // Tilt
+  const cosT = Math.cos(0.4);
+  const sinT = Math.sin(0.4);
+  const ry = py * cosT - rz * sinT;
+  const rz2 = py * sinT + rz * cosT;
+  const fov = 3;
+  const depth = fov / (fov + rz2);
+  return {
+    x: cx + rx * scale * 0.7 * depth,
+    y: cy + ry * scale * 0.7 * depth
+  };
+}
+
+function tesseract(i, total, cx, cy, scale) {
+  // 4D hypercube projected to 2D — 16 vertices + interpolated edges
+  const rot4 = time * 0.002; // 4D rotation
+  const rot3 = time * 0.003; // 3D rotation
+  // 16 vertices of a tesseract (all combos of ±1 in 4D)
+  const vIdx = i % 16;
+  const edgeLerp = ((i * 3) % total) / total;
+  const x4 = ((vIdx & 1) ? 1 : -1);
+  const y4 = ((vIdx & 2) ? 1 : -1);
+  const z4 = ((vIdx & 4) ? 1 : -1);
+  const w4 = ((vIdx & 8) ? 1 : -1);
+  // Interpolate along edges for particle spread
+  const nextV = (vIdx ^ (1 << (Math.floor(i / 16) % 4))) & 15;
+  const nx4 = ((nextV & 1) ? 1 : -1);
+  const ny4 = ((nextV & 2) ? 1 : -1);
+  const nz4 = ((nextV & 4) ? 1 : -1);
+  const nw4 = ((nextV & 8) ? 1 : -1);
+  const l = edgeLerp;
+  let px = x4 * (1 - l) + nx4 * l;
+  let py = y4 * (1 - l) + ny4 * l;
+  let pz = z4 * (1 - l) + nz4 * l;
+  let pw = w4 * (1 - l) + nw4 * l;
+  // Tight jitter — keeps edges crisp
+  px += Math.sin(i * 2.3) * 0.03;
+  py += Math.cos(i * 3.1) * 0.03;
+  pz += Math.sin(i * 1.7) * 0.03;
+  pw += Math.cos(i * 4.3) * 0.03;
+  // 4D rotation (XW plane)
+  const cos4 = Math.cos(rot4);
+  const sin4 = Math.sin(rot4);
+  const rx = px * cos4 - pw * sin4;
+  const rw = px * sin4 + pw * cos4;
+  // 4D→3D projection
+  const fov4 = 2.5;
+  const w3 = fov4 / (fov4 + rw);
+  const x3 = rx * w3;
+  const y3 = py * w3;
+  const z3 = pz * w3;
+  // 3D rotation (Y axis)
+  const cos3 = Math.cos(rot3);
+  const sin3 = Math.sin(rot3);
+  const fx = x3 * cos3 - z3 * sin3;
+  const fz = x3 * sin3 + z3 * cos3;
+  // 3D→2D projection
+  const fov3 = 3;
+  const depth = fov3 / (fov3 + fz);
+  return {
+    x: cx + fx * scale * 0.3 * depth,
+    y: cy + y3 * scale * 0.3 * depth
+  };
+}
+
+function dnaClassic(i, total, cx, cy, scale) {
+  // Realistic DNA double helix with visible base-pair rungs
+  const rot = time * 0.0014;
+  const TILT = 0.52;           // ~30 degree slant
+  const cosTilt = Math.cos(TILT);
+  const sinTilt = Math.sin(TILT);
+  const RADIUS = 0.38;        // helix radius — wider for clarity
+  const HEIGHT = 3.6;         // tall to show many turns
+  const TURNS = 3.5;          // natural DNA pitch (~10 base pairs per turn)
+
+  // Split particles: 40% backbone strand A, 40% backbone strand B, 20% rungs
+  const backboneCount = Math.floor(total * 0.4);
+  const rungCount = total - backboneCount * 2;
+
+  let px, py, pz;
+
+  if (i < backboneCount) {
+    // Strand A — smooth helix
+    const t = i / backboneCount;
+    py = (t - 0.5) * HEIGHT;
+    const angle = t * TURNS * TAU + rot * 3;
+    px = Math.cos(angle) * RADIUS;
+    pz = Math.sin(angle) * RADIUS;
+  } else if (i < backboneCount * 2) {
+    // Strand B — offset by PI (opposite side)
+    const idx = i - backboneCount;
+    const t = idx / backboneCount;
+    py = (t - 0.5) * HEIGHT;
+    const angle = t * TURNS * TAU + Math.PI + rot * 3;
+    px = Math.cos(angle) * RADIUS;
+    pz = Math.sin(angle) * RADIUS;
+  } else {
+    // Base-pair rungs — connect strand A to strand B at regular intervals
+    const rungIdx = i - backboneCount * 2;
+    const rungTotal = rungCount;
+    const t = rungIdx / rungTotal;
+    py = (t - 0.5) * HEIGHT;
+    const angle = t * TURNS * TAU + rot * 3;
+    // Interpolate across the diameter: each rung particle sits between the two strands
+    const rungPhase = (rungIdx % 5) / 4; // 5 particles per rung, spread across
+    const lerpAngle = angle + rungPhase * Math.PI;
+    // Slight radius variation for rung particles (they don't quite reach the backbone)
+    const rungR = RADIUS * (0.15 + rungPhase * 0.7);
+    px = Math.cos(lerpAngle) * rungR;
+    pz = Math.sin(lerpAngle) * rungR;
+  }
+
+  // Apply tilt
+  const tx = px * cosTilt - py * sinTilt;
+  const ty = px * sinTilt + py * cosTilt;
+  // Rotate around Y axis
+  const cosR = Math.cos(rot);
+  const sinR = Math.sin(rot);
+  const rx = tx * cosR - pz * sinR;
+  const rz = tx * sinR + pz * cosR;
+  const fov = 3;
+  const depth = fov / (fov + rz);
+  return { x: cx + rx * scale * depth, y: cy + ty * scale * 0.7 * depth };
+}
+
+function hypertetrahedron(i, total, cx, cy, scale) {
+  // 5-cell (Pentachoron) — 4D tetrahedron, 5 vertices, 10 edges
+  const rot4 = time * 0.0018;
+  const rot3 = time * 0.0025;
+  // 5 vertices of the 5-cell (regular simplex in 4D)
+  const verts = [
+    [ 1,  1,  1, -1/Math.sqrt(5)],
+    [ 1, -1, -1, -1/Math.sqrt(5)],
+    [-1,  1, -1, -1/Math.sqrt(5)],
+    [-1, -1,  1, -1/Math.sqrt(5)],
+    [ 0,  0,  0, Math.sqrt(5) - 1/Math.sqrt(5)]
+  ];
+  // Spread particles along all 10 edges
+  const edgeCount = 10;
+  const edges = [];
+  for (let a = 0; a < 5; a++) {
+    for (let b = a + 1; b < 5; b++) {
+      edges.push([a, b]);
+    }
+  }
+  const edgeIdx = i % edgeCount;
+  const edge = edges[edgeIdx];
+  const l = ((i * 7 + Math.floor(i / edgeCount)) % total) / total;
+  const v0 = verts[edge[0]], v1 = verts[edge[1]];
+  let px = v0[0] * (1 - l) + v1[0] * l;
+  let py = v0[1] * (1 - l) + v1[1] * l;
+  let pz = v0[2] * (1 - l) + v1[2] * l;
+  let pw = v0[3] * (1 - l) + v1[3] * l;
+  // Tight jitter
+  px += Math.sin(i * 2.7) * 0.03;
+  py += Math.cos(i * 3.4) * 0.03;
+  pz += Math.sin(i * 1.9) * 0.03;
+  pw += Math.cos(i * 4.1) * 0.03;
+  // 4D rotation (XW plane)
+  const cos4 = Math.cos(rot4);
+  const sin4 = Math.sin(rot4);
+  const rx = px * cos4 - pw * sin4;
+  const rw = px * sin4 + pw * cos4;
+  // 4D rotation (YZ plane) for more interesting tumble
+  const cos4b = Math.cos(rot4 * 0.7);
+  const sin4b = Math.sin(rot4 * 0.7);
+  const ry = py * cos4b - pz * sin4b;
+  const rz = py * sin4b + pz * cos4b;
+  // 4D→3D projection
+  const fov4 = 2.5;
+  const w3 = fov4 / (fov4 + rw);
+  const x3 = rx * w3;
+  const y3 = ry * w3;
+  const z3 = rz * w3;
+  // 3D rotation (Y axis)
+  const cos3 = Math.cos(rot3);
+  const sin3 = Math.sin(rot3);
+  const fx = x3 * cos3 - z3 * sin3;
+  const fz = x3 * sin3 + z3 * cos3;
+  // 3D→2D projection
+  const fov3 = 3;
+  const depth = fov3 / (fov3 + fz);
+  return {
+    x: cx + fx * scale * 0.3 * depth,
+    y: cy + y3 * scale * 0.3 * depth
+  };
+}
+
+function twentyfourCell(i, total, cx, cy, scale) {
+  // 24-cell — unique 4D polytope (no 3D analog), 24 vertices, 96 edges
+  const rot4 = time * 0.0015;
+  const rot3 = time * 0.002;
+  // 24 vertices: all permutations of (±1, ±1, 0, 0)
+  const verts = [];
+  const coords = [0, 1, 2, 3];
+  for (let a = 0; a < 4; a++) {
+    for (let b = a + 1; b < 4; b++) {
+      for (let sa = -1; sa <= 1; sa += 2) {
+        for (let sb = -1; sb <= 1; sb += 2) {
+          const v = [0, 0, 0, 0];
+          v[a] = sa;
+          v[b] = sb;
+          verts.push(v);
+        }
+      }
+    }
+  }
+  // Edges: connect vertices at distance sqrt(2)
+  const edges = [];
+  for (let a = 0; a < verts.length; a++) {
+    for (let b = a + 1; b < verts.length; b++) {
+      let d2 = 0;
+      for (let k = 0; k < 4; k++) d2 += (verts[a][k] - verts[b][k]) ** 2;
+      if (Math.abs(d2 - 2) < 0.01) edges.push([a, b]);
+    }
+  }
+  const edgeCount = edges.length;
+  const edgeIdx = i % edgeCount;
+  const edge = edges[edgeIdx];
+  const l = ((i * 13 + Math.floor(i / edgeCount) * 5) % total) / total;
+  const v0 = verts[edge[0]], v1 = verts[edge[1]];
+  let px = v0[0] * (1 - l) + v1[0] * l;
+  let py = v0[1] * (1 - l) + v1[1] * l;
+  let pz = v0[2] * (1 - l) + v1[2] * l;
+  let pw = v0[3] * (1 - l) + v1[3] * l;
+  // Tight jitter
+  px += Math.sin(i * 2.1) * 0.02;
+  py += Math.cos(i * 3.7) * 0.02;
+  pz += Math.sin(i * 1.4) * 0.02;
+  pw += Math.cos(i * 4.9) * 0.02;
+  // 4D double rotation (XW + YZ)
+  const cos4 = Math.cos(rot4);
+  const sin4 = Math.sin(rot4);
+  const rx = px * cos4 - pw * sin4;
+  const rw = px * sin4 + pw * cos4;
+  const cos4b = Math.cos(rot4 * 1.3);
+  const sin4b = Math.sin(rot4 * 1.3);
+  const ry = py * cos4b - pz * sin4b;
+  const rz = py * sin4b + pz * cos4b;
+  // 4D→3D
+  const fov4 = 2.5;
+  const w3 = fov4 / (fov4 + rw);
+  const x3 = rx * w3;
+  const y3 = ry * w3;
+  const z3 = rz * w3;
+  // 3D rotation
+  const cos3 = Math.cos(rot3);
+  const sin3 = Math.sin(rot3);
+  const fx = x3 * cos3 - z3 * sin3;
+  const fz = x3 * sin3 + z3 * cos3;
+  // 3D→2D
+  const fov3 = 3;
+  const depth = fov3 / (fov3 + fz);
+  return {
+    x: cx + fx * scale * 0.3 * depth,
+    y: cy + y3 * scale * 0.3 * depth
+  };
+}
+
+function oceanWave(i, total, cx, cy, scale) {
+  // Elegant 3D ocean wave — smooth flowing surface with cresting lip
+  const rot = time * 0.0008;
+
+  // Map particles across a 2D surface patch
+  const cols = Math.ceil(Math.sqrt(total * 1.8));
+  const rows = Math.ceil(total / cols);
+  const col = i % cols;
+  const row = Math.floor(i / cols);
+
+  // u = along the wave (0..1), v = across the wave width (0..1)
+  const u = col / (cols - 1);
+  const v = row / (rows - 1);
+
+  // X spans the wave length
+  const px_base = (u - 0.5) * 2.0;
+  // Z spans the wave depth
+  const pz_base = (v - 0.5) * 0.9;
+
+  // Wave profile: smooth asymmetric crest
+  // Steep front face, gentle trailing slope
+  const phase = u * Math.PI * 2;
+  const crest = Math.exp(-Math.pow((u - 0.62) * 5, 2)) * 0.55; // sharp peak at 62%
+  const swell = Math.sin(phase * 0.8 - 0.3) * 0.15; // broad underlying swell
+  const trough = -Math.abs(Math.sin(phase * 0.4)) * 0.08; // gentle dip at base
+
+  let py_base = -(crest + swell + trough);
+
+  // Cross-wave curvature (slight bow shape)
+  const vCenter = (v - 0.5);
+  py_base += vCenter * vCenter * 0.15;
+
+  // Subtle surface ripples for organic feel
+  py_base += Math.sin(u * 18 + v * 6 + time * 0.002) * 0.012;
+  py_base += Math.sin(u * 7 - v * 11 + time * 0.0015) * 0.008;
+
+  // Lip curl: particles near the crest top curl forward
+  let px = px_base;
+  let py = py_base;
+  let pz = pz_base;
+
+  if (u > 0.55 && u < 0.72) {
+    const lipT = (u - 0.55) / 0.17;
+    const curlAngle = lipT * lipT * Math.PI * 0.7;
+    const curlR = 0.06 * Math.sin(lipT * Math.PI);
+    px += Math.sin(curlAngle) * curlR;
+    py -= Math.cos(curlAngle) * curlR * 0.5;
+  }
+
+  // Spray particles at the very crest (top 3% of particles by position)
+  if (u > 0.58 && u < 0.67 && v > 0.3 && v < 0.7 && (i % 5 === 0)) {
+    const sprayT = Math.sin(i * 3.7) * 0.06;
+    px += sprayT * 0.3;
+    py -= Math.abs(sprayT) * 0.8;
+    pz += Math.cos(i * 2.3) * 0.04;
+  }
+
+  // 3D rotation
+  const cosR = Math.cos(rot);
+  const sinR = Math.sin(rot);
+  const rx = px * cosR - pz * sinR;
+  const rz = px * sinR + pz * cosR;
+  // Gentle tilt for perspective
+  const TILT = 0.25;
+  const cosT = Math.cos(TILT);
+  const sinT = Math.sin(TILT);
+  const ry = py * cosT - rz * sinT;
+  const rz2 = py * sinT + rz * cosT;
+
+  const fov = 3;
+  const depth = fov / (fov + rz2);
+  return {
+    x: cx + rx * scale * 0.55 * depth,
+    y: cy + ry * scale * 0.55 * depth
+  };
+}
+
+const patterns = [networkWave, dnaHelix, lorenzAttractor, mobiusStrip, tesseract, dnaClassic, hypertetrahedron, twentyfourCell, oceanWave];
+
+// Scale multipliers per pattern
+const SCALE_MULT = [1.8, 1, 2, 1.5, 1, 1, 2, 2, 1.8];
+
+function getTargetPosition(i, total) {
+  const cx = width / 2;
+  const cy = height / 2;
+  const scale = Math.min(width, height) * 0.38 * SCALE_MULT[currentPattern];
+  return patterns[currentPattern](i, total, cx, cy, scale);
+}
+
+// --- Precomputed golden color palette (max brightness) ---
+const PALETTE = [];
+const PALETTE_BRIGHT = []; // White-hot center colors
+for (let i = 0; i < 32; i++) {
+  const t = i / 31;
+  // Outer: bright gold to near-white (floor raised significantly)
+  const r = Math.round(230 + t * 25);
+  const g = Math.round(180 + t * 55);
+  const b = Math.round(80 + t * 80);
+  PALETTE.push(`rgb(${r},${g},${b})`);
+  // Center: pure white-gold core
+  const cr = Math.min(255, r + 25);
+  const cg = Math.min(255, g + 45);
+  const cb = Math.min(255, b + 70);
+  PALETTE_BRIGHT.push(`rgb(${cr},${cg},${cb})`);
+}
+
+// --- Particle class ---
+function createParticle(i) {
+  const angle = Math.random() * TAU;
+  const dist = Math.random() * Math.min(width, height) * 0.35; // Spawn closer to center
+  return {
+    x: width / 2 + Math.cos(angle) * dist,
+    y: height / 2 + Math.sin(angle) * dist,
+    vx: (Math.random() - 0.5) * 0.5,
+    vy: (Math.random() - 0.5) * 0.5,
+    // 1-2px dots — crisp sand grains
+    size: 1 + Math.random() * 1,
+    // Precomputed color index (no per-frame string building)
+    colorIdx: Math.floor(Math.random() * 32),
+    // Depth layer: 0 = far back (behind content), 1 = front (over content)
+    depth: Math.random(),
+  };
+}
+
+let activeParticleCount = PARTICLE_COUNT;
+
+function init() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2); // cap at 2x to avoid perf hit
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = canvasFg.width = width * dpr;
+  canvas.height = canvasFg.height = height * dpr;
+  canvas.style.width = canvasFg.style.width = width + 'px';
+  canvas.style.height = canvasFg.style.height = height + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctxFg.setTransform(dpr, 0, 0, dpr, 0, 0);
+  particles = [];
+  activeParticleCount = PARTICLE_COUNT;
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push(createParticle(i));
+  }
+  buildStructureLines();
+}
+
+// --- Structure lines (precomputed once, drawn from offscreen canvas) ---
+let structureCanvas = null;
+function buildStructureLines() {
+  structureCanvas = document.createElement('canvas');
+  structureCanvas.width = width;
+  structureCanvas.height = height;
+  const sctx = structureCanvas.getContext('2d');
+  const cx = width / 2;
+  const cy = height / 2;
+  const maxDist = Math.min(width, height) * 0.4;
+
+  sctx.strokeStyle = 'rgba(180, 140, 70, 0.03)';
+  sctx.lineWidth = 0.5;
+  for (let a = 0; a < TAU; a += TAU / 12) {
+    sctx.beginPath();
+    sctx.moveTo(cx, cy);
+    sctx.lineTo(cx + Math.cos(a) * maxDist, cy + Math.sin(a) * maxDist);
+    sctx.stroke();
+  }
+  for (let r = 80; r < maxDist; r += 80) {
+    sctx.beginPath();
+    sctx.arc(cx, cy, r, 0, TAU);
+    sctx.strokeStyle = `rgba(180, 140, 70, ${0.02 * (1 - r / maxDist)})`;
+    sctx.stroke();
+  }
+}
+
+// --- Runtime FPS safety valve ---
+let fpsHistory = [];
+let fpsCheckFrame = 0;
+function adaptParticleCount(dt) {
+  fpsCheckFrame++;
+  if (fpsCheckFrame < 60) return; // check every 60 frames
+  fpsCheckFrame = 0;
+  const fps = 1000 / (dt * 16.667);
+  fpsHistory.push(fps);
+  if (fpsHistory.length > 5) fpsHistory.shift();
+  const avgFps = fpsHistory.reduce((a, b) => a + b, 0) / fpsHistory.length;
+  if (avgFps < 25 && activeParticleCount > 2000) {
+    // Drop 20% of particles
+    const newCount = Math.max(2000, Math.floor(activeParticleCount * 0.8));
+    particles.length = newCount;
+    activeParticleCount = newCount;
+  }
+}
+
+// --- Main draw loop (delta-time for frame-rate independence) ---
+let lastTime = 0;
+function draw(now) {
+  requestAnimationFrame(draw);
+  if (!now) now = 0;
+  const dt = lastTime ? Math.min((now - lastTime) / 16.667, 3) : 1;
+  lastTime = now;
+  time++;
+  adaptParticleCount(dt);
+  patternTimer += dt;
+  // Decay mouse speed — only moving mouse scatters particles
+  mouse.speed *= 0.85;
+
+  // Pattern transition
+  if (patternTimer > PATTERN_DURATION) {
+    patternTimer = 0;
+    currentPattern = (currentPattern + 1) % patterns.length;
+  }
+
+  // Transition phase: how strongly particles seek target
+  // First formation is nearly instant (full strength from frame 1)
+  let seekStrength = ATTRACTOR_STRENGTH;
+  const isFirstFormation = (currentPattern === 0 && time < PATTERN_DURATION);
+  if (isFirstFormation) {
+    // Full strength immediately — particles snap to first shape fast
+    seekStrength = ATTRACTOR_STRENGTH * 1.5;
+  } else if (patternTimer < TRANSITION_FRAMES) {
+    // Reforming — ramp up from 60% to 100% (not from zero)
+    seekStrength = ATTRACTOR_STRENGTH * (0.6 + 0.4 * (patternTimer / TRANSITION_FRAMES));
+  } else if (patternTimer > PATTERN_DURATION - TRANSITION_FRAMES) {
+    // About to dissolve — gentle weakening to 40%
+    seekStrength = ATTRACTOR_STRENGTH * (0.4 + 0.6 * ((PATTERN_DURATION - patternTimer) / TRANSITION_FRAMES));
+  }
+
+  // Clear — full wipe for crisp dots (no motion blur)
+  ctx.fillStyle = '#04060a';
+  ctx.fillRect(0, 0, width, height);
+  ctxFg.clearRect(0, 0, width, height);
+
+  // Draw structural guides (precomputed offscreen canvas)
+  if (structureCanvas) ctx.drawImage(structureCanvas, 0, 0);
+
+  // Precompute center
+  const cx = width / 2;
+  const cy = height / 2;
+
+  // Update and draw particles
+  const pLen = activeParticleCount;
+  for (let i = 0; i < pLen; i++) {
+    const p = particles[i];
+
+    // Target position from current mathematical pattern
+    const target = getTargetPosition(i, pLen);
+
+    // Attractor force toward pattern (scaled by dt)
+    p.vx += (target.x - p.x) * seekStrength * dt;
+    p.vy += (target.y - p.y) * seekStrength * dt;
+
+    // Mouse interaction: black hole singularity + impulse scatter (distance-squared early-out)
+    const mdx = p.x - mouse.x;
+    const mdy = p.y - mouse.y;
+    const mDist2 = mdx * mdx + mdy * mdy;
+    const EVENT_HORIZON = 25;
+    const ACCRETION_DISK = 80;
+    const GRAVITY_WELL = MOUSE_RADIUS * 1.5;
+    const GRAVITY_WELL2 = GRAVITY_WELL * GRAVITY_WELL;
+
+    if (mDist2 < GRAVITY_WELL2 && mDist2 > 0) {
+    const mDist = Math.sqrt(mDist2);
+      if (mouse.speed > 2) {
+        // Moving mouse: scatter particles like dust motes
+        const proximity = 1 - mDist / MOUSE_RADIUS;
+        if (proximity > 0) {
+          const speedFactor = Math.min(mouse.speed / 30, 1);
+          const force = proximity * MOUSE_DISPERSE * speedFactor;
+          const angle = Math.random() * TAU;
+          const scatter = force * MOUSE_RADIUS * (0.2 + Math.random() * 0.5);
+          p.vx += Math.cos(angle) * scatter;
+          p.vy += Math.sin(angle) * scatter;
+        }
+      } else if (mDist < ACCRETION_DISK) {
+        if (mDist < EVENT_HORIZON) {
+          // Inside event horizon: eject to accretion disk edge (nothing stays inside)
+          const ejectAngle = Math.atan2(mdy, mdx) + (Math.random() - 0.5) * 1.5;
+          p.vx = Math.cos(ejectAngle) * 3;
+          p.vy = Math.sin(ejectAngle) * 3;
+        } else {
+          // Accretion disk: strong tangential orbit + mild inward pull
+          const orbitStrength = (1 - (mDist - EVENT_HORIZON) / (ACCRETION_DISK - EVENT_HORIZON)) * 0.6;
+          // Tangential (perpendicular to radius = orbit)
+          p.vx += (-mdy / mDist) * orbitStrength * dt;
+          p.vy += (mdx / mDist) * orbitStrength * dt;
+          // Gentle inward gravity
+          const gravity = orbitStrength * 0.15;
+          p.vx -= (mdx / mDist) * gravity;
+          p.vy -= (mdy / mDist) * gravity;
+        }
+      } else {
+        // Outer gravity well: subtle pull toward singularity
+        const pull = (1 - mDist / GRAVITY_WELL) * 0.03 * dt;
+        p.vx -= (mdx / mDist) * pull * 30;
+        p.vy -= (mdy / mDist) * pull * 30;
+      }
+    }
+
+    // Portrait singularity — both layers react (distance-squared early-out)
+    {
+      const portraitCx = width * 0.25;
+      const portraitCy = height * 0.5;
+      const portraitRadius = 151;
+      const pdx = p.x - portraitCx;
+      const pdy = p.y - portraitCy;
+      const pDist2 = pdx * pdx + pdy * pdy;
+      const P_GRAVITY_WELL = portraitRadius * 1.8;
+      const P_GRAVITY_WELL2 = P_GRAVITY_WELL * P_GRAVITY_WELL;
+
+      if (pDist2 < P_GRAVITY_WELL2 && pDist2 > 0) {
+        const pDist = Math.sqrt(pDist2);
+        const P_EVENT_HORIZON = portraitRadius;
+        const P_ACCRETION = portraitRadius * 1.15;
+
+        if (pDist < P_EVENT_HORIZON) {
+          const ejectAngle = Math.atan2(pdy, pdx) + (Math.random() - 0.5) * 0.8;
+          p.vx += Math.cos(ejectAngle) * 1.25;
+          p.vy += Math.sin(ejectAngle) * 1.25;
+        } else if (pDist < P_ACCRETION) {
+          const orbitStrength = (1 - (pDist - P_EVENT_HORIZON) / (P_ACCRETION - P_EVENT_HORIZON)) * 0.225;
+          p.vx += (-pdy / pDist) * orbitStrength * dt;
+          p.vy += (pdx / pDist) * orbitStrength * dt;
+          const gravity = orbitStrength * 0.125;
+          p.vx -= (pdx / pDist) * gravity;
+          p.vy -= (pdy / pDist) * gravity;
+        } else {
+          const pull = (1 - pDist / P_GRAVITY_WELL) * 0.0125 * dt;
+          p.vx -= (pdx / pDist) * pull * 30;
+          p.vy -= (pdy / pDist) * pull * 30;
+        }
+      }
+    }
+
+    // Anti-clumping — only on high-tier devices (most expensive per-particle op)
+    if (USE_ANTI_CLUMP && i % 8 === time % 8) {
+      for (let j = i + 1; j < Math.min(i + 10, pLen); j++) {
+        const sdx = p.x - particles[j].x;
+        const sdy = p.y - particles[j].y;
+        const sDist2 = sdx * sdx + sdy * sdy;
+        if (sDist2 < MIN_SEPARATION * MIN_SEPARATION && sDist2 > 0) {
+          const sDist = Math.sqrt(sDist2);
+          const sep = (MIN_SEPARATION - sDist) / MIN_SEPARATION * SEPARATION_FORCE;
+          p.vx += (sdx / sDist) * sep;
+          p.vy += (sdy / sDist) * sep;
+          particles[j].vx -= (sdx / sDist) * sep * 0.5;
+          particles[j].vy -= (sdy / sDist) * sep * 0.5;
+        }
+      }
+    }
+
+    // Gentle orbital drift (distance-squared avoids sqrt for most particles)
+    const dcx = p.x - cx, dcy = p.y - cy;
+    const distFromCenter2 = dcx * dcx + dcy * dcy;
+    if (distFromCenter2 > 100) { // 10^2
+      const distFromCenter = Math.sqrt(distFromCenter2);
+      p.vx += -dcy / distFromCenter * 0.003;
+      p.vy += dcx / distFromCenter * 0.003;
+    }
+
+    // Damping + Move (dt-scaled)
+    const damp = Math.pow(DAMPING, dt);
+    p.vx *= damp;
+    p.vy *= damp;
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+
+    // Soft boundary
+    if (p.x < -50) p.vx += 0.1;
+    if (p.x > width + 50) p.vx -= 0.1;
+    if (p.y < -50) p.vy += 0.1;
+    if (p.y > height + 50) p.vy -= 0.1;
+
+    // --- Rendering: bright crisp sand grain with hot center ---
+    // Choose canvas based on depth: front 40% renders over content
+    const renderCtx = p.depth > 0.6 ? ctxFg : ctx;
+    // Foreground particles slightly brighter/larger to sell depth
+    const depthScale = p.depth > 0.6 ? 1.15 : 1;
+    // Shimmer: ~30% of particles show their bright center at any moment (rotating)
+    const shimmer = ((i * 7 + time) & 31) < 10;
+    renderCtx.fillStyle = shimmer ? PALETTE_BRIGHT[p.colorIdx] : PALETTE[p.colorIdx];
+    renderCtx.fillRect(p.x, p.y, p.size * depthScale, p.size * depthScale);
+    // Always draw white-hot 1px center on larger particles
+    if (p.size > 1.3) {
+      renderCtx.fillStyle = PALETTE_BRIGHT[p.colorIdx];
+      renderCtx.fillRect(p.x + 0.5, p.y + 0.5, 1, 1);
+    }
+  }
+
+  // Central glow (where the Prime Radiant device would be)
+  const cx2 = width / 2;
+  const cy2 = height / 2;
+  const glowPulse = 0.5 + 0.2 * Math.sin(time * 0.01);
+  const centralGlow = ctx.createRadialGradient(cx2, cy2, 0, cx2, cy2, 200);
+  centralGlow.addColorStop(0, `rgba(212, 160, 86, ${0.04 * glowPulse})`);
+  centralGlow.addColorStop(0.5, `rgba(180, 130, 60, ${0.02 * glowPulse})`);
+  centralGlow.addColorStop(1, 'rgba(180, 130, 60, 0)');
+  ctx.fillStyle = centralGlow;
+  ctx.beginPath();
+  ctx.arc(cx2, cy2, 200, 0, TAU);
+  ctx.fill();
+
+  // Black hole singularity at mouse cursor — background only (behind text/portrait)
+  if (mouse.x > 0 && mouse.speed < 5) {
+    // Dark void center — true black (25% larger: 18 -> 22)
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.92)';
+    ctx.beginPath();
+    ctx.arc(mouse.x, mouse.y, 22, 0, TAU);
+    ctx.fill();
+
+    // Soft dark fade around void (scaled up proportionally)
+    const voidFade = ctx.createRadialGradient(mouse.x, mouse.y, 18, mouse.x, mouse.y, 50);
+    voidFade.addColorStop(0, 'rgba(0, 0, 0, 0.6)');
+    voidFade.addColorStop(0.5, 'rgba(0, 0, 0, 0.2)');
+    voidFade.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = voidFade;
+    ctx.beginPath();
+    ctx.arc(mouse.x, mouse.y, 50, 0, TAU);
+    ctx.fill();
+
+    // Event horizon ring (scaled: 22 -> 28)
+    ctx.strokeStyle = 'rgba(212, 160, 86, 0.25)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(mouse.x, mouse.y, 28, 0, TAU);
+    ctx.stroke();
+
+    // Outer photon ring (scaled: 55 -> 69)
+    const photonRing = ctx.createRadialGradient(mouse.x, mouse.y, 25, mouse.x, mouse.y, 69);
+    photonRing.addColorStop(0, 'rgba(212, 160, 86, 0.08)');
+    photonRing.addColorStop(0.4, 'rgba(212, 160, 86, 0.04)');
+    photonRing.addColorStop(1, 'rgba(180, 130, 60, 0)');
+    ctx.fillStyle = photonRing;
+    ctx.beginPath();
+    ctx.arc(mouse.x, mouse.y, 69, 0, TAU);
+    ctx.fill();
+  }
+
+  // Portrait singularity visual — aligned exactly with the CSS portrait circle (252px radius)
+  {
+    const pcx = width * 0.25;
+    const pcy = height * 0.5;
+    const pr = 151; // halo radius (252 * 0.6) — 40% reduced
+
+    // Dark void inside portrait area (background canvas only — behind the HTML portrait)
+    const pVoidFade = ctx.createRadialGradient(pcx, pcy, pr * 0.6, pcx, pcy, pr);
+    pVoidFade.addColorStop(0, 'rgba(0, 0, 0, 0.25)');
+    pVoidFade.addColorStop(0.7, 'rgba(0, 0, 0, 0.12)');
+    pVoidFade.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = pVoidFade;
+    ctx.beginPath();
+    ctx.arc(pcx, pcy, pr, 0, TAU);
+    ctx.fill();
+
+    // Photon ring — aligned to the circle edge (pr = 252, the halo sits at ~pr * 1.025)
+    const pPhoton = ctx.createRadialGradient(pcx, pcy, pr * 0.97, pcx, pcy, pr * 1.12);
+    pPhoton.addColorStop(0, 'rgba(212, 160, 86, 0.05)');
+    pPhoton.addColorStop(0.4, 'rgba(212, 160, 86, 0.03)');
+    pPhoton.addColorStop(1, 'rgba(180, 130, 60, 0)');
+    ctx.fillStyle = pPhoton;
+    ctx.beginPath();
+    ctx.arc(pcx, pcy, pr * 1.12, 0, TAU);
+    ctx.fill();
+  }
+
+  // Faint mathematical notation overlay on foreground (floats over content)
+  drawMathNotation(ctxFg);
+}
+
+// --- Floating mathematical notation ---
+const mathSymbols = ['∑', '∫', '∂', 'Δ', '∞', 'φ', 'π', 'Ω', 'λ', '∇', 'ℏ', '⟨ψ⟩', 'ε₀', '∮'];
+const floatingGlyphs = [];
+
+function initGlyphs() {
+  for (let i = 0; i < 20; i++) {
+    floatingGlyphs.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      symbol: mathSymbols[Math.floor(Math.random() * mathSymbols.length)],
+      alpha: 0,
+      targetAlpha: 0.04 + Math.random() * 0.06,
+      fadeSpeed: 0.001 + Math.random() * 0.002,
+      driftX: (Math.random() - 0.5) * 0.15,
+      driftY: (Math.random() - 0.5) * 0.15,
+      size: 12 + Math.random() * 16,
+      phase: Math.random() * TAU,
+      lifecycle: Math.random() * 600, // start at random point in lifecycle
+    });
+  }
+}
+
+function drawMathNotation(drawCtx) {
+  drawCtx.font = '16px "Courier New", monospace';
+  drawCtx.textAlign = 'center';
+  drawCtx.textBaseline = 'middle';
+
+  for (const g of floatingGlyphs) {
+    g.lifecycle++;
+    g.x += g.driftX;
+    g.y += g.driftY;
+
+    // Lifecycle: fade in, hold, fade out, respawn
+    const cyclePos = g.lifecycle % 600;
+    if (cyclePos < 100) {
+      g.alpha = g.targetAlpha * (cyclePos / 100);
+    } else if (cyclePos < 400) {
+      g.alpha = g.targetAlpha;
+    } else if (cyclePos < 600) {
+      g.alpha = g.targetAlpha * (1 - (cyclePos - 400) / 200);
+    }
+
+    // Respawn if off screen
+    if (g.x < -50 || g.x > width + 50 || g.y < -50 || g.y > height + 50 || cyclePos === 0) {
+      g.x = Math.random() * width;
+      g.y = Math.random() * height;
+      g.symbol = mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
+    }
+
+    // Mouse proximity: symbols brighten slightly
+    const mdx2 = g.x - mouse.x;
+    const mdy2 = g.y - mouse.y;
+    const mDist2g = mdx2 * mdx2 + mdy2 * mdy2;
+    let brightBoost = 0;
+    if (mDist2g < 40000) { // 200^2
+      brightBoost = (1 - Math.sqrt(mDist2g) / 200) * 0.08;
+    }
+
+    drawCtx.font = `${g.size}px "Courier New", monospace`;
+    drawCtx.fillStyle = `rgba(212, 170, 100, ${g.alpha + brightBoost})`;
+    drawCtx.fillText(g.symbol, g.x, g.y);
+  }
+}
+
+// --- Events (on document for dual-canvas support) ---
+document.addEventListener('mousemove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  mouse.prevX = mouse.x;
+  mouse.prevY = mouse.y;
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
+  const dx = mouse.x - mouse.prevX;
+  const dy = mouse.y - mouse.prevY;
+  mouse.speed = Math.sqrt(dx * dx + dy * dy);
+});
+
+document.addEventListener('mouseleave', () => {
+  mouse.x = -1000;
+  mouse.y = -1000;
+});
+
+// Touch support
+document.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  mouse.prevX = mouse.x;
+  mouse.prevY = mouse.y;
+  mouse.x = e.touches[0].clientX - rect.left;
+  mouse.y = e.touches[0].clientY - rect.top;
+  const dx = mouse.x - mouse.prevX;
+  const dy = mouse.y - mouse.prevY;
+  mouse.speed = Math.sqrt(dx * dx + dy * dy);
+}, { passive: false });
+
+document.addEventListener('touchend', () => {
+  mouse.x = -1000;
+  mouse.y = -1000;
+});
+
+window.addEventListener('resize', () => {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = canvasFg.width = width * dpr;
+  canvas.height = canvasFg.height = height * dpr;
+  canvas.style.width = canvasFg.style.width = width + 'px';
+  canvas.style.height = canvasFg.style.height = height + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctxFg.setTransform(dpr, 0, 0, dpr, 0, 0);
+  buildStructureLines();
+});
+
+// --- Init ---
+init();
+initGlyphs();
+requestAnimationFrame(draw);
+
+// === STATS COUNTER ANIMATION ===
+(function() {
+  const counters = document.querySelectorAll('.stat-number[data-target]');
+  if (!counters.length) return;
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.dataset.counted) return;
+      el.dataset.counted = '1';
+      const target = parseInt(el.dataset.target);
+      const display = el.dataset.display;
+      const duration = 2000;
+      const start = performance.now();
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        if (display && progress >= 1) {
+          el.textContent = display + '+';
+        } else if (target >= 1000) {
+          el.textContent = (current / 1000).toFixed(1).replace(/\.0$/, '') + 'K+';
+        } else {
+          el.textContent = current + '+';
+        }
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.3 });
+  counters.forEach(function(c) { observer.observe(c); });
+})();
+
+// === VIDEO THUMBNAIL CLICK-TO-PLAY ===
+(function() {
+  var thumb = document.getElementById('videoThumb');
+  if (!thumb) return;
+  thumb.addEventListener('click', function() {
+    var wrap = document.getElementById('videoWrap');
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/88YnIYVpIsU?rel=0&modestbranding=1&autoplay=1';
+    iframe.title = 'Aragorn Meulendijks';
+    iframe.setAttribute('frameborder', '0');
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'width:100%;height:100%;border:none';
+    wrap.removeChild(thumb);
+    wrap.appendChild(iframe);
+  });
+})();
+</script>
+
 </body>
 </html>
