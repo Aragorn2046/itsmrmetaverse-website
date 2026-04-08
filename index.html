@@ -32,7 +32,7 @@
 
 <link href="https://fonts.cdnfonts.com/css/nasalization-2" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; min-width: 0; }
   img { max-width: 100%; height: auto; }
   html { scroll-behavior: smooth; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
   body { background: #04060a; color: #e6edf3; font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden; width: 100%; max-width: 100%; }
@@ -224,7 +224,7 @@
   }
 
   /* === GLOBAL SECTION STYLES === */
-  section { position: relative; padding: 6rem 2rem; overflow-x: hidden; }
+  section { position: relative; padding: 6rem 2rem; overflow-x: hidden; max-width: 100%; }
   .section-label {
     font-family: 'Courier New', monospace;
     font-size: 0.8rem;
@@ -292,9 +292,11 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
     align-items: center;
   }
+  .about-grid > * { min-width: 0; }
   .about-image-wrap {
     background: #0a0c10;
     position: relative;
@@ -328,6 +330,8 @@
     line-height: 1.7;
     color: #8b949e;
     margin-bottom: 1rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
   .about-socials {
     display: flex;
@@ -958,6 +962,7 @@
     gap: 3rem;
     align-items: center;
     max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
   }
   .layout-split-photo {
