@@ -166,6 +166,8 @@
     animation: fadeUp 1s 2.0s ease-out forwards;
   }
 
+  .mobile-break { display: none; }
+  .desktop-sep { display: inline; }
   .hero-title em {
     font-style: normal;
     color: #d4a056;
@@ -1066,6 +1068,9 @@
     .hero-content { left: 50%; top: 65%; max-width: 90%; padding: 1.5rem; }
     .hero-cta { bottom: 5%; }
     .scroll-hint { display: none; }
+    .mobile-break { display: inline; }
+    .desktop-sep { display: none; }
+    .hero-title { text-align: center; }
   }
   @media (max-width: 600px) {
     .services-grid { grid-template-columns: 1fr; }
@@ -1095,7 +1100,7 @@
   <div class="hero-content">
     <div class="hero-label">&gt; ItsMrMetaverse</div>
     <h1 class="hero-name">ARAGORN</h1>
-    <p class="hero-title"><em>Future Historian</em> · AI Explorer · Singularity Surfer</p>
+    <p class="hero-title"><em>Future Historian</em> <span class="desktop-sep">·</span><br class="mobile-break"> AI Explorer · Singularity Surfer</p>
     <p class="hero-motto">"AI today is the worst it will ever be."</p>
   </div>
   <a href="#about" class="hero-cta">Explore</a>
