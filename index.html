@@ -872,108 +872,76 @@
   }
   .newsletter-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
     margin-bottom: 2.5rem;
-  }
-  .newsletter-featured {
-    grid-row: 1 / 3;
-    background: rgba(212, 160, 86, 0.015);
-    border: 1px solid rgba(212, 160, 86, 0.08);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s;
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-  }
-  .newsletter-featured:hover {
-    border-color: rgba(212, 160, 86, 0.25);
-    transform: translateY(-3px);
-  }
-  .newsletter-featured .nl-badge {
-    display: inline-block;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #04060a;
-    background: linear-gradient(135deg, #d4a056, #f0d8b0);
-    padding: 0.3rem 0.8rem;
-    border-radius: 3px;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  .nl-cover {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: #0a0f1a no-repeat center/cover;
-    display: block;
-  }
-  .newsletter-featured .nl-content {
-    padding: 2rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .newsletter-card .nl-content {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .newsletter-featured .nl-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #e6edf3;
-    line-height: 1.35;
-    margin-bottom: 1rem;
-  }
-  .newsletter-featured .nl-excerpt {
-    font-size: 0.95rem;
-    color: #8b949e;
-    line-height: 1.65;
-    flex: 1;
-  }
-  .newsletter-featured .nl-date {
-    font-size: 0.75rem;
-    color: #8b949e;
-    margin-top: 1.2rem;
-    letter-spacing: 0.05em;
   }
   .newsletter-card {
     background: rgba(212, 160, 86, 0.015);
     border: 1px solid rgba(212, 160, 86, 0.08);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s;
-    cursor: pointer;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     text-decoration: none;
     display: flex;
     flex-direction: column;
+    color: inherit;
   }
   .newsletter-card:hover {
-    border-color: rgba(212, 160, 86, 0.2);
-    transform: translateY(-2px);
+    border-color: rgba(212, 160, 86, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(212, 160, 86, 0.08);
   }
-  .newsletter-card .nl-title {
-    font-size: 1.05rem;
+  .nl-cover {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #0a0f1a;
+    display: block;
+    object-fit: cover;
+  }
+  .nl-content {
+    padding: 1.2rem 1.3rem 1.4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .nl-badge {
+    display: inline-block;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #04060a;
+    background: linear-gradient(135deg, #d4a056, #f0d8b0);
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    margin-bottom: 0.8rem;
+    align-self: flex-start;
+    font-weight: 600;
+  }
+  .nl-title {
+    font-size: 1rem;
     font-weight: 600;
     color: #e6edf3;
-    line-height: 1.4;
-    margin-bottom: 0.6rem;
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
   }
-  .newsletter-card .nl-excerpt {
-    font-size: 0.85rem;
+  .nl-excerpt {
+    font-size: 0.82rem;
     color: #8b949e;
     line-height: 1.55;
     flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  .newsletter-card .nl-date {
-    font-size: 0.7rem;
+  .nl-date {
+    font-size: 0.65rem;
     color: #8b949e;
-    margin-top: 0.8rem;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
+    margin-top: 0.9rem;
+    text-transform: uppercase;
   }
   .newsletter-subscribe {
     text-align: center;
@@ -1001,12 +969,14 @@
     font-size: 0.85rem;
     padding: 3rem 0;
   }
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
+    .newsletter-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 560px) {
     .newsletter-grid {
       grid-template-columns: 1fr;
-    }
-    .newsletter-featured {
-      grid-row: auto;
     }
   }
 
@@ -3016,7 +2986,6 @@ requestAnimationFrame(draw);
   }
 
   function stripHtml(html) {
-    // Safe HTML→text: parse as XML document, read textContent only
     try {
       const doc = new DOMParser().parseFromString(html, 'text/html');
       return (doc.body.textContent || '').replace(/\s+/g, ' ').trim();
@@ -3035,7 +3004,7 @@ requestAnimationFrame(draw);
 
     grid.textContent = '';
 
-    const maxArticles = Math.min(data.items.length, 3);
+    const maxArticles = Math.min(data.items.length, 4);
 
     for (let i = 0; i < maxArticles; i++) {
       const item = data.items[i];
@@ -3051,12 +3020,15 @@ requestAnimationFrame(draw);
       card.href = link;
       card.target = '_blank';
       card.rel = 'noopener noreferrer';
-      card.className = i === 0 ? 'newsletter-featured' : 'newsletter-card';
+      card.className = 'newsletter-card';
 
       if (thumb) {
-        const cover = document.createElement('div');
+        const cover = document.createElement('img');
         cover.className = 'nl-cover';
-        cover.style.backgroundImage = 'url(' + encodeURI(thumb) + ')';
+        cover.src = thumb;
+        cover.alt = title;
+        cover.loading = 'lazy';
+        cover.referrerPolicy = 'no-referrer';
         card.appendChild(cover);
       }
 
@@ -3066,13 +3038,12 @@ requestAnimationFrame(draw);
       if (i === 0) {
         const badge = document.createElement('span');
         badge.className = 'nl-badge';
-        badge.textContent = 'Latest Article';
+        badge.textContent = 'Latest';
         content.appendChild(badge);
       }
 
-      const excerptLimit = i === 0 ? 280 : 150;
-      const excerpt = plainText.length > excerptLimit
-        ? plainText.substring(0, excerptLimit).trim() + '...'
+      const excerpt = plainText.length > 180
+        ? plainText.substring(0, 180).trim() + '...'
         : plainText;
 
       const titleEl = document.createElement('div');
@@ -3090,26 +3061,33 @@ requestAnimationFrame(draw);
       grid.appendChild(card);
     }
   } catch (e) {
-    // Fallback: show static content if RSS fetch fails
-    grid.innerHTML =
-      '<a href="https://itsmrmetaverse.substack.com/p/the-petrodollar-trap-how-iran-could" target="_blank" rel="noopener noreferrer" class="newsletter-featured">' +
-        '<div class="nl-content">' +
-          '<span class="nl-badge">Latest Article</span>' +
-          '<div class="nl-title">The Petrodollar Trap: How Iran Could Collapse the American Economy Without Firing a Missile</div>' +
-          '<div class="nl-excerpt">Iran doesn\'t need nuclear weapons to destroy American economic dominance. By threatening the Strait of Hormuz, it can force Gulf petrodollars away from US markets...</div>' +
-          '<div class="nl-date">April 3, 2026</div>' +
-        '</div>' +
-      '</a>' +
-      '<a href="https://itsmrmetaverse.substack.com/p/the-pentagon-used-ai-to-bomb-3000" target="_blank" rel="noopener noreferrer" class="newsletter-card">' +
-        '<div class="nl-title">The Truth about The Iran War</div>' +
-        '<div class="nl-excerpt">How the Strait of Hormuz is the Achilles Heel of the World. Forget about Oil.</div>' +
-        '<div class="nl-date">March 17, 2026</div>' +
-      '</a>' +
-      '<a href="https://itsmrmetaverse.substack.com/p/xi-ping-is-winning-the-ai-cold-war" target="_blank" rel="noopener noreferrer" class="newsletter-card">' +
-        '<div class="nl-title">Xi Ping is winning the AI \'Cold War\' with Trump in the Strait of Hormuz</div>' +
-        '<div class="nl-excerpt">Is this Cold War II escalation, or the beginning of World War III?</div>' +
-        '<div class="nl-date">March 16, 2026</div>' +
-      '</a>';
+    grid.textContent = '';
+    const fallback = [
+      { url: 'https://itsmrmetaverse.substack.com/', title: 'Read on Substack', excerpt: 'Deep-research essays on AI, geopolitics, and exponential change.', date: '', badge: 'Latest' },
+      { url: 'https://itsmrmetaverse.substack.com/', title: 'Future-Historian', excerpt: 'Challenging mainstream forecasts with historical patterns.', date: '' },
+      { url: 'https://itsmrmetaverse.substack.com/', title: 'Subscribe', excerpt: 'New essays delivered directly to your inbox.', date: '' },
+      { url: 'https://itsmrmetaverse.substack.com/', title: 'Browse the Archive', excerpt: 'Every essay since day one is free to read.', date: '' }
+    ];
+    fallback.forEach(item => {
+      const card = document.createElement('a');
+      card.href = item.url;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.className = 'newsletter-card';
+      const content = document.createElement('div');
+      content.className = 'nl-content';
+      if (item.badge) {
+        const b = document.createElement('span');
+        b.className = 'nl-badge';
+        b.textContent = item.badge;
+        content.appendChild(b);
+      }
+      const t = document.createElement('div'); t.className = 'nl-title'; t.textContent = item.title;
+      const x = document.createElement('div'); x.className = 'nl-excerpt'; x.textContent = item.excerpt;
+      content.append(t, x);
+      card.appendChild(content);
+      grid.appendChild(card);
+    });
   }
 })();
 
