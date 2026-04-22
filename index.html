@@ -904,8 +904,20 @@
     margin-bottom: 1rem;
     font-weight: 600;
   }
+  .nl-cover {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #0a0f1a no-repeat center/cover;
+    display: block;
+  }
   .newsletter-featured .nl-content {
     padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .newsletter-card .nl-content {
+    padding: 1.5rem;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -933,7 +945,7 @@
     background: rgba(212, 160, 86, 0.015);
     border: 1px solid rgba(212, 160, 86, 0.08);
     border-radius: 10px;
-    padding: 1.5rem;
+    overflow: hidden;
     transition: border-color 0.3s, transform 0.3s;
     cursor: pointer;
     text-decoration: none;
@@ -995,137 +1007,6 @@
     }
     .newsletter-featured {
       grid-row: auto;
-    }
-  }
-
-  /* === PARALLAX LATEST ARTICLES === */
-  .parallax-section {
-    padding: 6rem 2rem;
-    border-top: 1px solid rgba(212, 160, 86, 0.06);
-    background: #04060a;
-  }
-  .parallax-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .parallax-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  .parallax-tagline {
-    font-size: 1.05rem;
-    color: #8b949e;
-    max-width: 620px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-  .parallax-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
-  }
-  .parallax-card {
-    background: rgba(212, 160, 86, 0.015);
-    border: 1px solid rgba(212, 160, 86, 0.08);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    color: inherit;
-  }
-  .parallax-card:hover {
-    border-color: rgba(212, 160, 86, 0.3);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(212, 160, 86, 0.08);
-  }
-  .parallax-cover {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: #0a0f1a no-repeat center/cover;
-    display: block;
-  }
-  .parallax-content {
-    padding: 1.2rem 1.3rem 1.4rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-  }
-  .px-badge {
-    display: inline-block;
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #d4a056;
-    border: 1px solid rgba(212, 160, 86, 0.35);
-    padding: 0.2rem 0.55rem;
-    border-radius: 3px;
-    margin-bottom: 0.8rem;
-    align-self: flex-start;
-    font-weight: 600;
-  }
-  .px-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #e6edf3;
-    line-height: 1.35;
-    margin-bottom: 0.5rem;
-  }
-  .px-excerpt {
-    font-size: 0.82rem;
-    color: #8b949e;
-    line-height: 1.55;
-    flex: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .px-date {
-    font-size: 0.65rem;
-    color: #8b949e;
-    letter-spacing: 0.08em;
-    margin-top: 0.9rem;
-    text-transform: uppercase;
-  }
-  .parallax-cta {
-    text-align: center;
-    margin-top: 0.5rem;
-  }
-  .parallax-cta a {
-    display: inline-block;
-    padding: 0.8rem 2.5rem;
-    border: 1px solid rgba(212, 160, 86, 0.4);
-    color: #d4a056;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .parallax-cta a:hover {
-    background: rgba(212, 160, 86, 0.1);
-    border-color: #d4a056;
-    box-shadow: 0 0 30px rgba(212, 160, 86, 0.15);
-  }
-  .parallax-loading {
-    text-align: center;
-    color: #8b949e;
-    font-size: 0.85rem;
-    padding: 3rem 0;
-    grid-column: 1 / -1;
-  }
-  @media (max-width: 1100px) {
-    .parallax-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (max-width: 560px) {
-    .parallax-grid {
-      grid-template-columns: 1fr;
     }
   }
 
@@ -1615,24 +1496,6 @@
   <img src="assets/action-shots/20250617-Tomdoms_1317894.jpg" alt="Aragorn delivering keynote to packed audience" loading="lazy">
   <div class="photo-break-caption">Delivering keynotes across 15+ countries</div>
 </div>
-
-<!-- ═══════════ PARALLAX — LATEST ARTICLES ═══════════ -->
-<section class="parallax-section" id="parallax">
-  <div class="parallax-inner">
-    <div class="parallax-header">
-      <div class="section-label">Deep Research</div>
-      <h2 class="section-heading">Latest from Parallax</h2>
-      <div class="section-divider"></div>
-      <p class="parallax-tagline">Long-form research on AI, robotics, geopolitics, and the structure of the near future. Written with conviction, not consensus.</p>
-    </div>
-    <div class="parallax-grid" id="parallax-grid">
-      <div class="parallax-loading">Loading latest articles...</div>
-    </div>
-    <div class="parallax-cta">
-      <a href="https://parallax.itsmrmetaverse.com/" target="_blank" rel="noopener noreferrer">View All Articles</a>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════ PODCAST ═══════════ -->
 <section class="spotify-section">
@@ -3144,6 +3007,24 @@ requestAnimationFrame(draw);
   const grid = document.getElementById('newsletter-grid');
   if (!grid) return;
 
+  function extractThumbnail(item) {
+    if (item.thumbnail) return item.thumbnail;
+    if (item.enclosure && item.enclosure.link) return item.enclosure.link;
+    const html = item.content || item.description || '';
+    const m = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+    return m ? m[1] : '';
+  }
+
+  function stripHtml(html) {
+    // Safe HTML→text: parse as XML document, read textContent only
+    try {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      return (doc.body.textContent || '').replace(/\s+/g, ' ').trim();
+    } catch {
+      return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    }
+  }
+
   try {
     const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://itsmrmetaverse.substack.com/feed');
     const res = await fetch(apiUrl);
@@ -3152,7 +3033,7 @@ requestAnimationFrame(draw);
 
     if (data.status !== 'ok' || !data.items || data.items.length === 0) throw new Error('No articles found');
 
-    grid.innerHTML = '';
+    grid.textContent = '';
 
     const maxArticles = Math.min(data.items.length, 3);
 
@@ -3160,54 +3041,53 @@ requestAnimationFrame(draw);
       const item = data.items[i];
       const title = item.title || '';
       const link = item.link || '#';
-      const plainText = item.description || '';
+      const plainText = stripHtml(item.description || '');
+      const thumb = extractThumbnail(item);
 
       const date = new Date(item.pubDate);
       const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
+      const card = document.createElement('a');
+      card.href = link;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.className = i === 0 ? 'newsletter-featured' : 'newsletter-card';
+
+      if (thumb) {
+        const cover = document.createElement('div');
+        cover.className = 'nl-cover';
+        cover.style.backgroundImage = 'url(' + encodeURI(thumb) + ')';
+        card.appendChild(cover);
+      }
+
+      const content = document.createElement('div');
+      content.className = 'nl-content';
+
       if (i === 0) {
-        const excerpt = plainText.substring(0, 280).trim() + (plainText.length > 280 ? '...' : '');
-        const card = document.createElement('a');
-        card.href = link;
-        card.target = '_blank';
-        card.rel = 'noopener noreferrer';
-        card.className = 'newsletter-featured';
-        const content = document.createElement('div');
-        content.className = 'nl-content';
         const badge = document.createElement('span');
         badge.className = 'nl-badge';
         badge.textContent = 'Latest Article';
-        const titleEl = document.createElement('div');
-        titleEl.className = 'nl-title';
-        titleEl.textContent = title;
-        const excerptEl = document.createElement('div');
-        excerptEl.className = 'nl-excerpt';
-        excerptEl.textContent = excerpt;
-        const dateEl = document.createElement('div');
-        dateEl.className = 'nl-date';
-        dateEl.textContent = dateStr;
-        content.append(badge, titleEl, excerptEl, dateEl);
-        card.appendChild(content);
-        grid.appendChild(card);
-      } else {
-        const excerpt = plainText.substring(0, 150).trim() + (plainText.length > 150 ? '...' : '');
-        const card = document.createElement('a');
-        card.href = link;
-        card.target = '_blank';
-        card.rel = 'noopener noreferrer';
-        card.className = 'newsletter-card';
-        const titleEl = document.createElement('div');
-        titleEl.className = 'nl-title';
-        titleEl.textContent = title;
-        const excerptEl = document.createElement('div');
-        excerptEl.className = 'nl-excerpt';
-        excerptEl.textContent = excerpt;
-        const dateEl = document.createElement('div');
-        dateEl.className = 'nl-date';
-        dateEl.textContent = dateStr;
-        card.append(titleEl, excerptEl, dateEl);
-        grid.appendChild(card);
+        content.appendChild(badge);
       }
+
+      const excerptLimit = i === 0 ? 280 : 150;
+      const excerpt = plainText.length > excerptLimit
+        ? plainText.substring(0, excerptLimit).trim() + '...'
+        : plainText;
+
+      const titleEl = document.createElement('div');
+      titleEl.className = 'nl-title';
+      titleEl.textContent = title;
+      const excerptEl = document.createElement('div');
+      excerptEl.className = 'nl-excerpt';
+      excerptEl.textContent = excerpt;
+      const dateEl = document.createElement('div');
+      dateEl.className = 'nl-date';
+      dateEl.textContent = dateStr;
+
+      content.append(titleEl, excerptEl, dateEl);
+      card.appendChild(content);
+      grid.appendChild(card);
     }
   } catch (e) {
     // Fallback: show static content if RSS fetch fails
@@ -3233,108 +3113,6 @@ requestAnimationFrame(draw);
   }
 })();
 
-// === PARALLAX: Fetch latest articles from parallax.itsmrmetaverse.com ===
-(async function() {
-  const grid = document.getElementById('parallax-grid');
-  if (!grid) return;
-
-  function renderStaticFallback() {
-    grid.textContent = '';
-    const fallback = [
-      { url: 'https://parallax.itsmrmetaverse.com/', badge: 'Latest', title: 'Latest Deep Research', excerpt: 'Long-form research on AI, robotics, geopolitics, and the structure of the near future.', date: '' },
-      { url: 'https://parallax.itsmrmetaverse.com/', title: 'Explore the Archive', excerpt: 'Every article on Parallax is research-backed and written with conviction, not consensus.', date: '' },
-      { url: 'https://parallax.itsmrmetaverse.com/', title: 'Subscribe for Updates', excerpt: 'Get new Parallax articles as they are published.', date: '' },
-      { url: 'https://parallax.itsmrmetaverse.com/', title: 'Visit Parallax', excerpt: 'Browse the full publication at parallax.itsmrmetaverse.com.', date: '' }
-    ];
-    fallback.forEach(item => grid.appendChild(buildCard(item)));
-  }
-
-  function formatDate(iso) {
-    if (!iso) return '';
-    try {
-      return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-    } catch { return ''; }
-  }
-
-  function buildCard(item) {
-    const card = document.createElement('a');
-    card.href = item.url;
-    card.target = '_blank';
-    card.rel = 'noopener noreferrer';
-    card.className = 'parallax-card';
-
-    if (item.cover) {
-      const cover = document.createElement('div');
-      cover.className = 'parallax-cover';
-      cover.style.backgroundImage = 'url(' + encodeURI(item.cover) + ')';
-      card.appendChild(cover);
-    }
-
-    const content = document.createElement('div');
-    content.className = 'parallax-content';
-
-    if (item.badge) {
-      const badge = document.createElement('span');
-      badge.className = 'px-badge';
-      badge.textContent = item.badge;
-      content.appendChild(badge);
-    }
-
-    const titleEl = document.createElement('div');
-    titleEl.className = 'px-title';
-    titleEl.textContent = item.title;
-    content.appendChild(titleEl);
-
-    const excerptEl = document.createElement('div');
-    excerptEl.className = 'px-excerpt';
-    excerptEl.textContent = item.excerpt;
-    content.appendChild(excerptEl);
-
-    if (item.date) {
-      const dateEl = document.createElement('div');
-      dateEl.className = 'px-date';
-      dateEl.textContent = item.date;
-      content.appendChild(dateEl);
-    }
-
-    card.appendChild(content);
-    return card;
-  }
-
-  try {
-    const res = await fetch('https://parallax.itsmrmetaverse.com/api/articles?published=true', {
-      headers: { 'Accept': 'application/json' },
-      mode: 'cors'
-    });
-    if (!res.ok) throw new Error('Fetch failed: ' + res.status);
-    const data = await res.json();
-    const articles = (data.articles || data.items || data || [])
-      .filter(a => a && (a.status === 'published' || a.published))
-      .slice(0, 4);
-
-    if (articles.length === 0) throw new Error('No articles');
-
-    grid.textContent = '';
-    articles.forEach((a, i) => {
-      const excerptRaw = a.summary?.thesis || a.question || a.excerpt || '';
-      const excerpt = excerptRaw.length > 180 ? excerptRaw.substring(0, 180).trim() + '...' : excerptRaw;
-      let cover = a.heroImage || a.coverImage || '';
-      if (cover && cover.startsWith('/')) {
-        cover = 'https://parallax.itsmrmetaverse.com' + cover;
-      }
-      grid.appendChild(buildCard({
-        url: 'https://parallax.itsmrmetaverse.com/article/' + encodeURIComponent(a.slug),
-        cover: cover,
-        badge: i === 0 ? 'Latest' : '',
-        title: a.title || '',
-        excerpt: excerpt,
-        date: formatDate(a.publishedAt || a.createdAt)
-      }));
-    });
-  } catch (e) {
-    renderStaticFallback();
-  }
-})();
 </script>
 
 </div><!-- .page-wrap -->
